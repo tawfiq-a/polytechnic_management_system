@@ -29,40 +29,40 @@ A polytechnic management System app , has 4 catagory in it :
 
 ------------------------------ ARCHITECTURE ---------------------------
 
-lib/
-├── core/                        # Global and shared code
-│   ├── constants/               # colors, strings, api_constants
-│   ├── services/                # ApiService, LocalStorage, AuthService
-│   ├── theme/                   # AppTheme, TextStyles
-│   └── widgets/                 # Global common widgets (CustomButton, CustomTextField)
-│
-├── features/                    # main modules and features
-│   ├── exam_control/
-│   │   ├── controllers/         # Logic & State (GetX Controllers)
-│   │   ├── models/              # Data structures
-│   │   └── views/               # UI Screens & local widgets           
-│   │
-│   ├── library_management/           
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   └── views/
-│   │
-│   ├── polytechnic_management/
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   └── views/
-│   │
-│   └── register_management/
-│       ├── controllers/
-│       ├── models/
-│       └── views/
-│
-├── main_screen/                 # Bottom Navigation or main dashboard
-│   ├── controllers/
-│   └── views/
-│
-├── routes/                      # navigation management
-│   ├── app_pages.dart           # Route definitions (GetPage list)
-│   └── app_routes.dart          # Route names (static strings)
-│
-└── main.dart                    # app entry point
+*   lib/
+*   ├── core/                        # Global and shared code
+*   │   ├── constants/               # colors, strings, api_constants
+*   │   ├── services/                # ApiService, LocalStorage, AuthService
+*   │   ├── theme/                   # AppTheme, TextStyles
+*   │   └── widgets/                 # Global common widgets (CustomButton, CustomTextField)
+*   │
+*   ├── features/                    # main modules and features
+*   │   ├── exam_control/
+*   │   │   ├── controllers/         # Logic & State (GetX Controllers)
+*   │   │   ├── models/              # Data structures
+*   │   │   └── views/               # UI Screens & local widgets           
+*   │   │
+*   │   ├── library_management/           
+*   │   │   ├── controllers/
+*   │   │   ├── models/
+*   │   │   └── views/
+*   │   │
+*   │   ├── polytechnic_management/
+*   │   │   ├── controllers/
+*   │   │   ├── models/
+*   │   │   └── views/
+*   │   │
+*   │   └── register_management/
+*   │       ├── controllers/
+*   │       ├── models/
+*   │       └── views/
+*   │
+*   ├── main_screen/                 # Bottom Navigation or main dashboard
+*   │   ├── controllers/
+*   │   └── views/
+*   │
+*   ├── routes/                      # navigation management
+*   │   ├── app_pages.dart           # Route definitions (GetPage list)
+*   │   └── app_routes.dart          # Route names (static strings)
+*   │
+*   └── main.dart                    # app entry point
