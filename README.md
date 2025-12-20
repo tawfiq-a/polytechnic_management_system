@@ -1,16 +1,68 @@
-# poly_manage_systm
+# Polytecnic_Management_System
 
-A new Flutter project.
+--------------------------------------------------------------
 
-## Getting Started
+A polytechnic management System app , has 4 catagory in it :
+Polytechnic Management,
+Library Management,
+Exam Controller,
+Register/Accounts Management
 
-This project is a starting point for a Flutter application.
+--------------------------------------------------------------
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##   RULES
+
+# For Developers
+Must maintain the app folder structure 
+Store all files in exact folder,
+Use clean and maintainable code,
+
+                            ******* design think  *******
+                            
+When design in app from web figma design
+make the web side bar in app drawer
+and all the pop up form use bottomsheet in app 
+
+
+
+------------------------------ ARCHITECTURE ---------------------------
+
+lib/
+├── core/                        # Global and shared code
+│   ├── constants/               # colors, strings, api_constants
+│   ├── services/                # ApiService, LocalStorage, AuthService
+│   ├── theme/                   # AppTheme, TextStyles
+│   └── widgets/                 # Global common widgets (CustomButton, CustomTextField)
+│
+├── features/                    # main modules and features
+│   ├── exam_control/
+│   │   ├── controllers/         # Logic & State (GetX Controllers)
+│   │   ├── models/              # Data structures
+│   │   └── views/               # UI Screens & local widgets           
+│   │
+│   ├── library_management/           
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   └── views/
+│   │
+│   ├── polytechnic_management/
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   └── views/
+│   │
+│   └── register_management/
+│       ├── controllers/
+│       ├── models/
+│       └── views/
+│
+├── main_screen/                 # Bottom Navigation or main dashboard
+│   ├── controllers/
+│   └── views/
+│
+├── routes/                      # navigation management
+│   ├── app_pages.dart           # Route definitions (GetPage list)
+│   └── app_routes.dart          # Route names (static strings)
+│
+└── main.dart                    # app entry point
