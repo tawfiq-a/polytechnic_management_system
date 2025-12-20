@@ -3,10 +3,10 @@
 --------------------------------------------------------------
 
 A polytechnic management System app , has 4 catagory in it :
-Polytechnic Management,
-Library Management,
-Exam Controller,
-Register/Accounts Management
+* Polytechnic Management,
+* Library Management,
+* Exam Controller,
+* Register/Accounts Management
 
 --------------------------------------------------------------
 
@@ -15,15 +15,15 @@ Register/Accounts Management
 ##   RULES
 
 # For Developers
-Must maintain the app folder structure 
-Store all files in exact folder,
-Use clean and maintainable code,
+* Must maintain the app folder structure 
+* Store all files in exact folder,
+* Use clean and maintainable code,
 
                             ******* design think  *******
                             
-When design in app from web figma design
-make the web side bar in app drawer
-and all the pop up form use bottomsheet in app 
+# When design in app from web figma design
+# make the web side bar in app drawer
+# and all the pop up form use bottomsheet in app 
 
 
 
