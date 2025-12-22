@@ -1,113 +1,124 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+
+import '../../../core/widgets/ddashboard_card.dart';
+import '../../library_management/views/library_view.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final List<String> imgList = [
+      'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyRYZn0X1afBwRNxWrk8DLgjFQLD42qeNOsp9_WTpQSCL-eCWJ-_2hgh9MqkooYZpCGZjNSeh3P0bG_JwQEgtjIXFjUpbBNW58yEA0UXWB8mLVf1BAFoQrEIie1pDxxZkk3a0o=s680-w680-h510-rw',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ufNcESqpdhuL1dTiTOZLtJOlXfDSTSnlJA&s',
+      'https://diplomabd.com/wp-content/uploads/2017/02/munshiganj-e1693044919312.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Munshiganj_Polytechnic_Institute_8.jpg/1280px-Munshiganj_Polytechnic_Institute_8.jpg',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScAYTF-C9cW6X66-qfmXM0D47C126YgDo8BQ&s',
+    ];
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.amber,
         automaticallyImplyLeading: false,
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(Icons.menu, color: Colors.white),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          ),
-        ),
         title: const Text(
           "MUPI Management System",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
-      ),
-
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.black,
-              ),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Text(
-                  'MUPI Menu',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ),
-
-            ListTile(
-              leading: const Icon(Icons.dashboard),
-              title: const Text('Dashboard'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-
-            ListTile(
-              leading: const Icon(Icons.people),
-              title: const Text('Students'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
       ),
 
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                width: double.infinity,
+              Padding(
                 padding: const EdgeInsets.all(20),
-                decoration: const BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
-                  ),
-                ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      "What do you want to check today?",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: Image.asset("assets/images/img.png"),
+                        ),
+                        const SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Munshiganj Polytechnic Institute",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "Mirkadim, Munshiganj",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                     SizedBox(height: 10),
                     Text(
-                      "Select a section from the menu",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 13,
-                      ),
+                      "Munshiganj Polytechnic Institute is a government polytechnic institute. It was established in 2006. This institute conducts 4 years Diploma-in-Engineering course under BTEB.  Here are 7 technologies.",
+                      style: TextStyle(fontSize: 18),
+                      textAlign: TextAlign.justify,
                     ),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 80),
+              Center(
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    height: 200.0,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    aspectRatio: 16 / 9,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: const Duration(
+                      milliseconds: 800,
+                    ),
+                    viewportFraction: 0.8,
+                  ),
+                  items: imgList
+                      .map(
+                        (item) => Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.amber.shade400,
+                                spreadRadius: 2,
+                                blurRadius: 9,
+                              ),
+                            ],
+                          ),
+                          margin: const EdgeInsets.all(5.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image.network(
+                              item,
+                              fit: BoxFit.cover,
+                              width: 1000,
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
+
+              const SizedBox(height: 50),
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -118,74 +129,44 @@ class MainScreen extends StatelessWidget {
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
                   children: [
-                    _DashboardCard(
-                      title: "Polytechnic",
+                    DashboardCard(
+                      title: "Polytechnic Management",
                       icon: Icons.school,
                     ),
-                    _DashboardCard(
-                      title: "Library  ",
+                    DashboardCard(
+                      title: "Library Management ",
                       icon: Icons.book_outlined,
+                      onTap: () {
+                        Get.to(() => const LibraryManagement());
+                      },
                     ),
-                    _DashboardCard(
-                      title: "Register ",
+                    DashboardCard(
+                      title: "Register Management",
                       icon: Icons.account_balance,
                     ),
-                    _DashboardCard(
-                      title: "Exam",
+                    DashboardCard(
+                      title: "Exam Management",
                       icon: Icons.calendar_today,
                     ),
-
+                    DashboardCard(
+                      title: "Notice",
+                      icon: Icons.notifications_active,
+                    ),
+                    DashboardCard(
+                      title: "Campus Location",
+                      icon: Icons.location_on_outlined,
+                    ),
+                    DashboardCard(
+                      title: "Blood Donation",
+                      icon: Icons.bloodtype,
+                    ),
                   ],
                 ),
               ),
+              const SizedBox(height: 50),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _DashboardCard extends StatelessWidget {
-  final String title;
-  final IconData icon;
-
-  const _DashboardCard({
-    required this.title,
-    required this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black54 ,
-          width:2
-        ),
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 6,
-            offset: Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 40, color: Colors.black),
-          const SizedBox(height: 10),
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
       ),
     );
   }
