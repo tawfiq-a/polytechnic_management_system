@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+
+import '../../library_management/views/library_view.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -119,18 +123,24 @@ class MainScreen extends StatelessWidget {
                   crossAxisSpacing: 20,
                   children: [
                     _DashboardCard(
+                      onTap: (){},
                       title: "Polytechnic",
                       icon: Icons.school,
                     ),
                     _DashboardCard(
+                      onTap: (){
+                        Get.to(LibraryManagement());
+                      },
                       title: "Library  ",
                       icon: Icons.book_outlined,
                     ),
                     _DashboardCard(
+                      onTap: (){},
                       title: "Register ",
                       icon: Icons.account_balance,
                     ),
                     _DashboardCard(
+                      onTap: (){},
                       title: "Exam",
                       icon: Icons.calendar_today,
                     ),
@@ -149,43 +159,49 @@ class MainScreen extends StatelessWidget {
 class _DashboardCard extends StatelessWidget {
   final String title;
   final IconData icon;
+  final VoidCallback? onTap;
+
 
   const _DashboardCard({
     required this.title,
     required this.icon,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black54 ,
-          width:2
-        ),
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 6,
-            offset: Offset(0, 4),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black54 ,
+            width:2
           ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 40, color: Colors.black),
-          const SizedBox(height: 10),
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 6,
+              offset: Offset(0, 4),
             ),
-          ),
-        ],
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 40, color: Colors.black),
+            const SizedBox(height: 10),
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
