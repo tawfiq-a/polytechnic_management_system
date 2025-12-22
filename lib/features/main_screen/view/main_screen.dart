@@ -1,7 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 
 import '../../../core/widgets/ddashboard_card.dart';
+import '../../../routes/app_routes.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -93,6 +96,15 @@ class MainScreen extends StatelessWidget {
                   items: imgList
                       .map(
                         (item) => Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.amber.shade400,
+                                spreadRadius: 1,
+                                blurRadius: 9,
+                              ),
+                            ],
+                          ),
                           margin: const EdgeInsets.all(5.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10.0),
@@ -118,16 +130,29 @@ class MainScreen extends StatelessWidget {
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
                   children: [
-                    DashboardCard(title: "Polytechnic", icon: Icons.school),
+                    DashboardCard(title: "Polytechnic Management", icon: Icons.school),
                     DashboardCard(
-                      title: "Library  ",
+                      title: "Library Management  ",
                       icon: Icons.book_outlined,
                     ),
                     DashboardCard(
-                      title: "Register ",
+                      title: "Register Management",
                       icon: Icons.account_balance,
                     ),
-                    DashboardCard(title: "Exam", icon: Icons.calendar_today),
+                    DashboardCard(title: "Exam Management", icon: Icons.calendar_today,onTap: (){Get.toNamed(AppRoutes.dashboard);
+                    },),
+                    DashboardCard(
+                      title: "Notice",
+                      icon: Icons.notification_important_outlined,
+                    ),
+                    DashboardCard(
+                      title: "Campus Location",
+                      icon: Icons.location_on_outlined,
+                    ),
+                    DashboardCard(
+                      title: "Blood Donation",
+                      icon: Icons.bloodtype,
+                    ),
                   ],
                 ),
               ),
