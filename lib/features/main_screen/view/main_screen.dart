@@ -108,7 +108,7 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 80),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: GridView.count(
