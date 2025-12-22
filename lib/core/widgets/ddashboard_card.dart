@@ -15,12 +15,12 @@ class DashboardCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.transparent, // ম্যাটেরিয়াল কালার ট্রান্সপারেন্ট রাখা হয়েছে
+      color: Colors.transparent,
       child: InkWell(
         onTap: onTap ?? () {},
-        borderRadius: BorderRadius.circular(16), // এটি কন্টেইনারের রেডিয়াসের সাথে মিলতে হবে
-        splashColor: Colors.amber.withOpacity(0.2), // ক্লিক করলে আম্বার কালারের ঢেউ দেখা যাবে
-        highlightColor: Colors.amber.withOpacity(0.1), // চেপে ধরে রাখলে যে কালার হবে
+        borderRadius: BorderRadius.circular(16),
+        splashColor: Colors.amber.withOpacity(0.2),
+        highlightColor: Colors.amber.withOpacity(0.1),
         child: Ink(
           decoration: BoxDecoration(
             border: Border.all(color: Colors.amber, width: 2),
