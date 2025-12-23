@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class CustomDrawer extends StatefulWidget {
-  const CustomDrawer({super.key});
-  @override
-  State<CustomDrawer> createState() => _CustomDrawerState();
-}
+class CustomDrawer extends StatelessWidget {
+  final String selectedItem;
+  final Function(String) onItemSelected;
 
-class _CustomDrawerState extends State<CustomDrawer> {
-  String selectedItem = 'Dashboards'; // default selected
+  const CustomDrawer({
+    super.key,
+    required this.selectedItem,
+    required this.onItemSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,47 +28,25 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ],
             ),
           ),
-          _drawerItem('Dashboards', Icons.dashboard, () {
-            setState(() => selectedItem = 'Dashboards');
-
-          }),
-          _drawerItem('Book Management', Icons.book, () {
-            setState(() => selectedItem = 'Book Management');
-
-          }),
-          _drawerItem('Issue & Return', Icons.swap_horiz, () {
-            setState(() => selectedItem = 'Issue & Return');
-
-          }),
+          _drawerItem('Dashboards', Icons.dashboard),
+          _drawerItem('Book Management', Icons.book),
+          _drawerItem('Issue & Return', Icons.swap_horiz),
           ExpansionTile(
             leading: const Icon(Icons.category, color: Colors.black),
             title: const Text('Categories', style: TextStyle(color: Colors.black)),
             children: [
-              _drawerItem('Add Department', Icons.apartment, () {
-                setState(() => selectedItem = 'Add Department');
-
-              }, isSubItem: true),
-              _drawerItem('Add Semester', Icons.date_range, () {
-                setState(() => selectedItem = 'Add Semester');
-
-              }, isSubItem: true),
+              _drawerItem('Add Department', Icons.apartment, isSubItem: true),
+              _drawerItem('Add Semester', Icons.date_range, isSubItem: true),
             ],
           ),
-          _drawerItem('Student Management', Icons.people, () {
-            setState(() => selectedItem = 'Student Management');
-
-          }),
-          _drawerItem('Profile', Icons.person, () {
-            setState(() => selectedItem = 'Profile');
-
-          }),
+          _drawerItem('Student Management', Icons.people),
+          _drawerItem('Profile', Icons.person),
         ],
       ),
     );
   }
 
-  Widget _drawerItem(String title, IconData icon, VoidCallback onTap,
-      {bool isSubItem = false}) {
+  Widget _drawerItem(String title, IconData icon, {bool isSubItem = false}) {
     final bool isSelected = selectedItem == title;
 
     return Container(
@@ -78,17 +56,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
         borderRadius: BorderRadius.circular(8),
       ),
       child: ListTile(
-        contentPadding: EdgeInsets.only(left: isSubItem ? 16 : 16),
         leading: Icon(icon, color: Colors.black),
-        title: Text(
-          title,
-          style: const TextStyle(color: Colors.black),
-        ),
-        onTap: onTap,
+        title: Text(title, style: const TextStyle(color: Colors.black)),
+        onTap: () => onItemSelected(title),
       ),
     );
   }
 }
-
-
-
