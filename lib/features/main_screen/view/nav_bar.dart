@@ -1,4 +1,3 @@
-
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,14 +5,17 @@ import 'package:poly_manage_systm/features/main_screen/view/main_screen.dart';
 
 import '../controllers/nav_controller.dart';
 
-
-
 class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: const Center(child: Text("Chat Screen", style: TextStyle(fontSize: 30, color: Colors.amber))),
+      child: const Center(
+        child: Text(
+          "Chat Screen",
+          style: TextStyle(fontSize: 30, color: Colors.amber),
+        ),
+      ),
     );
   }
 }
@@ -23,20 +25,20 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: const Center(child: Text("Profile Screen", style: TextStyle(fontSize: 30, color: Colors.amber))),
+      child: const Center(
+        child: Text(
+          "Profile Screen",
+          style: TextStyle(fontSize: 30, color: Colors.amber),
+        ),
+      ),
     );
   }
 }
 
 class BottomNavBar extends StatelessWidget {
-
   final NavController controller = Get.put(NavController());
 
-  final List<Widget> screens = [
-    ChatScreen(),
-    MainScreen(),
-    ProfileScreen(),
-  ];
+  final List<Widget> screens = [ChatScreen(), MainScreen(), ProfileScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,6 @@ class BottomNavBar extends StatelessWidget {
         ],
         color: Colors.amber,
         buttonBackgroundColor: Colors.amber,
-
 
         backgroundColor: Colors.transparent,
 
