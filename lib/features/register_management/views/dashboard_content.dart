@@ -6,36 +6,38 @@ class DashboardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "Dashboard Overview",
-            style: TextStyle(color: Colors.grey, fontSize: 13, fontWeight: FontWeight.w500),
-          ),
-          const SizedBox(height: 20),
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "Dashboard Overview",
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(height: 20),
 
-          // পেমেন্ট ইনফো কার্ড
-          _buildTableCard(
-            title: "Payment Info",
-            table: _paymentTable(),
-          ),
 
-          const SizedBox(height: 24),
+            _buildTableCard(title: "Payment Info", table: _paymentTable()),
 
-          // স্টুডেন্ট অ্যাপ্লিকেশন কার্ড
-          _buildTableCard(
-            title: "Students Application",
-            table: _studentTable(),
-          ),
-        ],
+            const SizedBox(height: 24),
+
+            _buildTableCard(
+              title: "Students Application",
+              table: _studentTable(),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  // টেবিল কার্ড র‍্যাপার
+
   Widget _buildTableCard({required String title, required Widget table}) {
     return Container(
       width: double.infinity,
@@ -58,11 +60,14 @@ class DashboardContent extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Text(
               title,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF333333)),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Color(0xFF333333),
+              ),
             ),
           ),
           const Divider(height: 1),
-          // টেবিল যদি স্ক্রিনের বাইরে চলে যায় তবে স্ক্রল করার জন্য
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Padding(
@@ -77,7 +82,11 @@ class DashboardContent extends StatelessWidget {
               onPressed: () {},
               child: const Text(
                 "View All >",
-                style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 13),
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 13,
+                ),
               ),
             ),
           ),
@@ -86,10 +95,12 @@ class DashboardContent extends StatelessWidget {
     );
   }
 
-  // পেমেন্ট টেবিল উইজেট
   Widget _paymentTable() {
     return DataTable(
-      headingTextStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
+      headingTextStyle: const TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.black87,
+      ),
       dataTextStyle: const TextStyle(fontSize: 13, color: Colors.black54),
       columnSpacing: 40,
       columns: const [
@@ -101,32 +112,87 @@ class DashboardContent extends StatelessWidget {
         DataColumn(label: Text('Time')),
         DataColumn(label: Text('Action')),
       ],
-      rows: List.generate(7, (index) => DataRow(cells: [
-        const DataCell(Text('651310')),
-        const DataCell(Text('651310')),
-        const DataCell(Text('2500TK')),
-        const DataCell(Text('Rocket')),
-        const DataCell(Text('5685592')),
-        const DataCell(Text('10:00 am')),
-        DataCell(_actionButton()),
-      ])),
+      rows: List.generate(
+        7,
+        (index) => DataRow(
+          cells: [
+            const DataCell(Text('651310')),
+            const DataCell(Text('651310')),
+            const DataCell(Text('2500TK')),
+            const DataCell(Text('Rocket')),
+            const DataCell(Text('5685592')),
+            const DataCell(Text('10:00 am')),
+            DataCell(_actionButton()),
+          ],
+        ),
+      ),
     );
   }
 
-  // স্টুডেন্ট টেবিল উইজেট
+
   Widget _studentTable() {
-    // ডামি ডাটা লিস্ট
     final List<Map<String, String>> students = [
-      {"name": "Cheyenne Donin", "roll": "28545", "dept": "CST", "sem": "1st", "shift": "Day", "date": "19 May 25", "status": "Approved"},
-      {"name": "Anika Schleifer", "roll": "28545", "dept": "CST", "sem": "3rd", "shift": "Morning", "date": "19 May 25", "status": "Approved"},
-      {"name": "Tiana Donin", "roll": "28545", "dept": "CST", "sem": "4th", "shift": "Day", "date": "19 May 25", "status": "Pending"},
-      {"name": "Giana Workman", "roll": "28545", "dept": "CST", "sem": "2nd", "shift": "Morning", "date": "19 May 25", "status": "Cancel"},
-      {"name": "Charlie Septimus", "roll": "28545", "dept": "CST", "sem": "CST", "shift": "Day", "date": "19 May 25", "status": "Cancel"},
-      {"name": "Ashlynn Aminoff", "roll": "28545", "dept": "CST", "sem": "CST", "shift": "Morning", "date": "19 May 25", "status": "Pending"},
+      {
+        "name": "Cheyenne Donin",
+        "roll": "28545",
+        "dept": "CST",
+        "sem": "1st",
+        "shift": "Day",
+        "date": "19 May 25",
+        "status": "Approved",
+      },
+      {
+        "name": "Anika Schleifer",
+        "roll": "28545",
+        "dept": "CST",
+        "sem": "3rd",
+        "shift": "Morning",
+        "date": "19 May 25",
+        "status": "Approved",
+      },
+      {
+        "name": "Tiana Donin",
+        "roll": "28545",
+        "dept": "CST",
+        "sem": "4th",
+        "shift": "Day",
+        "date": "19 May 25",
+        "status": "Pending",
+      },
+      {
+        "name": "Giana Workman",
+        "roll": "28545",
+        "dept": "CST",
+        "sem": "2nd",
+        "shift": "Morning",
+        "date": "19 May 25",
+        "status": "Cancel",
+      },
+      {
+        "name": "Charlie Septimus",
+        "roll": "28545",
+        "dept": "CST",
+        "sem": "CST",
+        "shift": "Day",
+        "date": "19 May 25",
+        "status": "Cancel",
+      },
+      {
+        "name": "Ashlynn Aminoff",
+        "roll": "28545",
+        "dept": "CST",
+        "sem": "CST",
+        "shift": "Morning",
+        "date": "19 May 25",
+        "status": "Pending",
+      },
     ];
 
     return DataTable(
-      headingTextStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
+      headingTextStyle: const TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.black87,
+      ),
       dataTextStyle: const TextStyle(fontSize: 13, color: Colors.black54),
       columnSpacing: 30,
       columns: const [
@@ -139,28 +205,33 @@ class DashboardContent extends StatelessWidget {
         DataColumn(label: Text('Status')),
         DataColumn(label: Text('Action')),
       ],
-      rows: students.map((s) => DataRow(cells: [
-        DataCell(Text(s['name']!)),
-        DataCell(Text(s['roll']!)),
-        DataCell(Text(s['dept']!)),
-        DataCell(Text(s['sem']!)),
-        DataCell(Text(s['shift']!)),
-        DataCell(Text(s['date']!)),
-        DataCell(_statusBadge(s['status']!)),
-        DataCell(_actionButton()),
-      ])).toList(),
+      rows: students
+          .map(
+            (s) => DataRow(
+              cells: [
+                DataCell(Text(s['name']!)),
+                DataCell(Text(s['roll']!)),
+                DataCell(Text(s['dept']!)),
+                DataCell(Text(s['sem']!)),
+                DataCell(Text(s['shift']!)),
+                DataCell(Text(s['date']!)),
+                DataCell(_statusBadge(s['status']!)),
+                DataCell(_actionButton()),
+              ],
+            ),
+          )
+          .toList(),
     );
   }
 
-  // স্ট্যাটাস ব্যাজ ডিজাইন (Approved, Pending, Cancel)
   Widget _statusBadge(String status) {
     Color color;
     if (status == "Approved") {
-      color = const Color(0xFF2ECC71); // Green
+      color = const Color(0xFF2ECC71);
     } else if (status == "Pending") {
-      color = const Color(0xFF3498DB); // Blue
+      color = const Color(0xFF3498DB);
     } else {
-      color = const Color(0xFFE74C3C); // Red/Cancel
+      color = const Color(0xFFE74C3C);
     }
 
     return Container(
@@ -172,20 +243,24 @@ class DashboardContent extends StatelessWidget {
       ),
       child: Text(
         status,
-        style: TextStyle(color: color, fontSize: 11, fontWeight: FontWeight.bold),
+        style: TextStyle(
+          color: color,
+          fontSize: 11,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
 
-  // একশন বাটন (View Details)
+
   Widget _actionButton() {
     return SizedBox(
       height: 30,
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF003D4D), // আপনার ইমেজের ডার্ক ব্লু কালার
-          foregroundColor: Colors.white,
+          backgroundColor: Colors.amber,
+          foregroundColor: Colors.black,
           padding: const EdgeInsets.symmetric(horizontal: 12),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           elevation: 0,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:poly_manage_systm/features/register_management/views/payment_content.dart';
 import 'package:poly_manage_systm/features/register_management/views/student_content.dart';
 import '../controllers/dashboard_controller.dart';
 import 'dashboard_content.dart';
@@ -11,6 +12,7 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.amber,
         title: const Text(
           "Register Management System",
           style: TextStyle(
@@ -19,45 +21,17 @@ class MainView extends StatelessWidget {
             fontSize: 18,
           ),
         ),
-        backgroundColor: Colors.white,
         elevation: 1,
         iconTheme: const IconThemeData(color: Colors.black),
-        actions: [
-          const Icon(Icons.notifications_none_outlined),
-          const SizedBox(width: 15),
-          CircleAvatar(
-            backgroundColor: Colors.grey[300],
-            child: const Icon(Icons.person),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Wilson",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                    color: Colors.black,
-                  ),
-                ),
-                Text(
-                  "Admin",
-                  style: TextStyle(fontSize: 10, color: Colors.grey),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
-      drawer: Drawer(
+      endDrawer: Drawer(
         child: Column(
           children: [
             DrawerHeader(
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.shade300),
+                  color: Colors.amber,
+                  border: Border.all(color: Colors.amber),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding: const EdgeInsets.all(10),
@@ -78,7 +52,8 @@ class MainView extends StatelessWidget {
       body: Obx(() {
         if (controller.selectedIndex.value == 0) return DashboardContent();
         if (controller.selectedIndex.value == 1) return StudentContent();
-        return const Center(child: Text("Payment Content Coming Soon"));
+        if (controller.selectedIndex.value == 2) return const PaymentContent();
+        return Container();
       }),
     );
   }
@@ -91,12 +66,12 @@ class MainView extends StatelessWidget {
           controller.changeMenu(index);
           Get.back();
         },
-        leading: Icon(icon, color: isSelected ? Colors.white : Colors.grey),
+        leading: Icon(icon, color: isSelected ? Colors.black : Colors.amber),
         title: Text(
           title,
-          style: TextStyle(color: isSelected ? Colors.white : Colors.black),
+          style: TextStyle(color: isSelected ? Colors.black : Colors.black),
         ),
-        tileColor: isSelected ? const Color(0xFF003D4D) : Colors.transparent,
+        tileColor: isSelected ? Colors.amber : Colors.transparent,
       );
     });
   }

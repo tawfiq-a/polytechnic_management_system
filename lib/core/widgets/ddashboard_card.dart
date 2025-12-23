@@ -37,14 +37,14 @@ class DashboardCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // একটি সুন্দর সার্কেল ব্যাকগ্রাউন্ড আইকনের জন্য (অপশনাল)
+
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.amber.withOpacity(0.1),
+                  color: Colors.amber,
                   shape: BoxShape.circle,
                 ),
-                child: Icon(icon, size: 35, color: Colors.amber),
+                child: Icon(icon, size: 35, color: Colors.black),
               ),
               const SizedBox(height: 12),
               Text(

@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:poly_manage_systm/features/exam_control/views/exm_view.dart';
 import 'package:poly_manage_systm/features/register_management/views/dash_reg_main.dart';
 
 import '../../../core/widgets/ddashboard_card.dart';
@@ -24,7 +25,7 @@ class MainScreen extends StatelessWidget {
         backgroundColor: Colors.amber,
         automaticallyImplyLeading: false,
         title: const Text(
-          "MUPI Management System",
+          "Polytechnic Management System",
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,
@@ -149,6 +150,9 @@ class MainScreen extends StatelessWidget {
                       icon: Icons.account_balance,
                     ),
                     DashboardCard(
+                      onTap: (){
+                        Get.to(() => ExamView());
+                      },
                       title: "Exam Management",
                       icon: Icons.calendar_today,
                     ),

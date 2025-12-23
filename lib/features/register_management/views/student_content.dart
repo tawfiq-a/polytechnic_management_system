@@ -31,7 +31,7 @@ class StudentContent extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF003D4D),
+                backgroundColor:Colors.amber,
               ),
             ),
           ),
@@ -87,7 +87,6 @@ class StudentContent extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                // টেবিলটি স্ক্রলযোগ্য করা হয়েছে
                 Scrollbar(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -147,12 +146,12 @@ class StudentContent extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xFF003D4D),
+        backgroundColor:  Colors.amber,
         elevation: 0,
       ),
       child: const Text(
         "View Details",
-        style: TextStyle(fontSize: 10, color: Colors.white),
+        style: TextStyle(fontSize: 10, color: Colors.black),
       ),
     );
   }

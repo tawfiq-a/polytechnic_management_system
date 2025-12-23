@@ -49,24 +49,26 @@ class BottomNavBar extends StatelessWidget {
 
       body: Obx(() => screens[controller.currentIndex.value]),
 
-      bottomNavigationBar: CurvedNavigationBar(
-        key: controller.bottomNavigationKey,
-        index: controller.currentIndex.value,
-        items: const <Widget>[
-          Icon(Icons.wechat_outlined, size: 30),
-          Icon(Icons.dashboard, size: 30),
-          Icon(Icons.perm_identity, size: 30),
-        ],
-        color: Colors.amber,
-        buttonBackgroundColor: Colors.amber,
-
-        backgroundColor: Colors.transparent,
-
-        animationCurve: Curves.easeInOut,
-        animationDuration: const Duration(milliseconds: 600),
-        onTap: (index) {
-          controller.changePage(index);
-        },
+      bottomNavigationBar: SafeArea(
+        child: CurvedNavigationBar(
+          key: controller.bottomNavigationKey,
+          index: controller.currentIndex.value,
+          items: const <Widget>[
+            Icon(Icons.wechat_outlined, size: 30),
+            Icon(Icons.dashboard, size: 30),
+            Icon(Icons.perm_identity, size: 30),
+          ],
+          color: Colors.amber,
+          buttonBackgroundColor: Colors.amber,
+        
+          backgroundColor: Colors.transparent,
+        
+          animationCurve: Curves.easeInOut,
+          animationDuration: const Duration(milliseconds: 600),
+          onTap: (index) {
+            controller.changePage(index);
+          },
+        ),
       ),
     );
   }
