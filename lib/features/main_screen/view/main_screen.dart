@@ -14,11 +14,11 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> imgList = [
-      'https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyRYZn0X1afBwRNxWrk8DLgjFQLD42qeNOsp9_WTpQSCL-eCWJ-_2hgh9MqkooYZpCGZjNSeh3P0bG_JwQEgtjIXFjUpbBNW58yEA0UXWB8mLVf1BAFoQrEIie1pDxxZkk3a0o=s680-w680-h510-rw',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ufNcESqpdhuL1dTiTOZLtJOlXfDSTSnlJA&s',
-      'https://diplomabd.com/wp-content/uploads/2017/02/munshiganj-e1693044919312.jpg',
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Munshiganj_Polytechnic_Institute_8.jpg/1280px-Munshiganj_Polytechnic_Institute_8.jpg',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScAYTF-C9cW6X66-qfmXM0D47C126YgDo8BQ&s',
+      'assets/images/1.jpeg',
+      'assets/images/2.jpeg',
+      'assets/images/3.jpeg',
+      'assets/images/5.jpeg',
+      'assets/images/4.jpeg',
     ];
     return Scaffold(
       appBar: AppBar(
@@ -108,7 +108,7 @@ class MainScreen extends StatelessWidget {
                           margin: const EdgeInsets.all(5.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10.0),
-                            child: Image.network(
+                            child: Image.asset(
                               item,
                               fit: BoxFit.cover,
                               width: 1000,
@@ -139,7 +139,7 @@ class MainScreen extends StatelessWidget {
                       title: "Library Management ",
                       icon: Icons.book_outlined,
                       onTap: () {
-                        Get.to(() => const LibraryManagement());
+                        Get.to(() => LibraryManagement());
                       },
                     ),
                     DashboardCard(
