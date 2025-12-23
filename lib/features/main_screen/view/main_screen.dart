@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:poly_manage_systm/features/register_management/views/dash_reg_main.dart';
 
 import '../../../core/widgets/ddashboard_card.dart';
 import '../../library_management/views/library_view.dart';
@@ -70,7 +71,7 @@ class MainScreen extends StatelessWidget {
                     SizedBox(height: 10),
                     Text(
                       "Munshiganj Polytechnic Institute is a government polytechnic institute. It was established in 2006. This institute conducts 4 years Diploma-in-Engineering course under BTEB.  Here are 7 technologies.",
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 16),
                       textAlign: TextAlign.justify,
                     ),
                   ],
@@ -87,7 +88,7 @@ class MainScreen extends StatelessWidget {
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: const Duration(
-                      milliseconds: 800,
+                      milliseconds: 900,
                     ),
                     viewportFraction: 0.8,
                   ),
@@ -141,6 +142,9 @@ class MainScreen extends StatelessWidget {
                       },
                     ),
                     DashboardCard(
+                      onTap: () {
+                        Get.to(() => MainView());
+                      },
                       title: "Register Management",
                       icon: Icons.account_balance,
                     ),
