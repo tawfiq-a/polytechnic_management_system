@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 void showAddStudentForm() {
   Get.bottomSheet(
     Container(
-      height: Get.height * 0.9, // স্ক্রিনের ৯০% জায়গা নেবে
+      height: Get.height * 0.9,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -14,7 +14,6 @@ void showAddStudentForm() {
       ),
       child: Column(
         children: [
-          // হেডার সেকশন
           Padding(
             padding: const EdgeInsets.all(20),
             child: Row(
@@ -22,7 +21,11 @@ void showAddStudentForm() {
               children: [
                 const Text(
                   "Students Application Details",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF003D4D)),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF003D4D),
+                  ),
                 ),
                 IconButton(
                   onPressed: () => Get.back(),
@@ -33,14 +36,13 @@ void showAddStudentForm() {
           ),
           const Divider(height: 1),
 
-          // ফর্ম কন্টেন্ট (Scrollable)
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // ১. Application Info
+                  //  Application Info
                   _sectionTitle("Application Info"),
                   _buildThreeColumnRow([
                     _inputField("Department", "CST"),
@@ -54,7 +56,7 @@ void showAddStudentForm() {
                   ]),
 
                   const SizedBox(height: 20),
-                  // ২. Personal Info
+                  //  Personal Info
                   _sectionTitle("Personal Info"),
                   _buildThreeColumnRow([
                     _inputField("Name", "Name"),
@@ -73,7 +75,7 @@ void showAddStudentForm() {
                   ]),
 
                   const SizedBox(height: 20),
-                  // ৩. Academic Info
+                  //  Academic Info
                   _sectionTitle("Academic Info"),
                   _buildThreeColumnRow([
                     _inputField("SSC/HSC Roll", "123456"),
@@ -97,7 +99,7 @@ void showAddStudentForm() {
                   _documentItem("NID"),
 
                   const SizedBox(height: 30),
-                  // ৫. Footer (Status & Add Info)
+                  //  Footer (Status & Add Info)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -106,9 +108,15 @@ void showAddStudentForm() {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.grey[400],
-                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 40,
+                            vertical: 15,
+                          ),
                         ),
-                        child: const Text("Add Info", style: TextStyle(color: Colors.black)),
+                        child: const Text(
+                          "Add Info",
+                          style: TextStyle(color: Colors.black),
+                        ),
                       ),
                     ],
                   ),
@@ -119,37 +127,50 @@ void showAddStudentForm() {
         ],
       ),
     ),
-    isScrollControlled: true, // ফুল স্ক্রিন করার জন্য প্রয়োজন
+    isScrollControlled: true,
   );
 }
 
-// সেকশন টাইটেল ডিজাইন
+
 Widget _sectionTitle(String title) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10),
     child: Text(
       title,
-      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue),
+      style: const TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+        color: Colors.blue,
+      ),
     ),
   );
 }
 
-// ৩ কলামের রো তৈরির জন্য
+
 Widget _buildThreeColumnRow(List<Widget> children) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 10),
     child: Row(
-      children: children.map((e) => Expanded(child: Padding(padding: const EdgeInsets.all(4), child: e))).toList(),
+      children: children
+          .map(
+            (e) => Expanded(
+              child: Padding(padding: const EdgeInsets.all(4), child: e),
+            ),
+          )
+          .toList(),
     ),
   );
 }
 
-// ইনপুট ফিল্ড ডিজাইন
+
 Widget _inputField(String label, String hint, {double? width}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+      Text(
+        label,
+        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+      ),
       const SizedBox(height: 5),
       SizedBox(
         width: width,
@@ -159,8 +180,14 @@ Widget _inputField(String label, String hint, {double? width}) {
             hintText: hint,
             hintStyle: const TextStyle(fontSize: 12, color: Colors.grey),
             contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(5), borderSide: BorderSide(color: Colors.grey.shade300)),
-            enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5), borderSide: BorderSide(color: Colors.grey.shade300)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: BorderSide(color: Colors.grey.shade300),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: BorderSide(color: Colors.grey.shade300),
+            ),
           ),
         ),
       ),
@@ -168,7 +195,7 @@ Widget _inputField(String label, String hint, {double? width}) {
   );
 }
 
-// ফাইল আপলোড বক্স
+
 Widget _uploadBox() {
   return Container(
     width: double.infinity,
@@ -180,48 +207,77 @@ Widget _uploadBox() {
     child: Column(
       children: [
         const Icon(Icons.cloud_upload_outlined, size: 40, color: Colors.grey),
-        const Text("Drop file or browse", style: TextStyle(fontWeight: FontWeight.bold)),
-        const Text("Format: .jpeg, .png, PDF & Max file size: 25 MB", style: TextStyle(fontSize: 10, color: Colors.grey)),
+        const Text(
+          "Drop file or browse",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        const Text(
+          "Format: .jpeg, .png, PDF & Max file size: 25 MB",
+          style: TextStyle(fontSize: 10, color: Colors.grey),
+        ),
         const SizedBox(height: 10),
         ElevatedButton(
           onPressed: () {},
-          style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF003D4D)),
-          child: const Text("Browse Files", style: TextStyle(color: Colors.white, fontSize: 12)),
-        )
+          style: ElevatedButton.styleFrom(
+            backgroundColor:  Colors.amber,
+          ),
+          child: const Text(
+            "Browse Files",
+            style: TextStyle(color: Colors.white, fontSize: 12),
+          ),
+        ),
       ],
     ),
   );
 }
 
-// ডকুমেন্ট লিস্ট আইটেম
+
 Widget _documentItem(String title) {
   return Container(
     margin: const EdgeInsets.only(bottom: 10),
     padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-    decoration: BoxDecoration(color: Colors.grey[100], borderRadius: BorderRadius.circular(5)),
+    decoration: BoxDecoration(
+      color: Colors.grey[100],
+      borderRadius: BorderRadius.circular(5),
+    ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(title, style: const TextStyle(fontSize: 13)),
         ElevatedButton(
           onPressed: () {},
-          style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF003D4D), minimumSize: const Size(80, 30)),
-          child: const Text("Download", style: TextStyle(fontSize: 10, color: Colors.white)),
-        )
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.amber,
+            minimumSize: const Size(80, 30),
+          ),
+          child: const Text(
+            "Download",
+            style: TextStyle(fontSize: 10, color: Colors.white),
+          ),
+        ),
       ],
     ),
   );
 }
 
-
 Widget _statusDropdown() {
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 10),
-    decoration: BoxDecoration(color: Colors.lightBlue[100], borderRadius: BorderRadius.circular(5)),
+    decoration: BoxDecoration(
+      color: Colors.lightBlue[100],
+      borderRadius: BorderRadius.circular(5),
+    ),
     child: DropdownButton<String>(
       value: "Approved",
       underline: Container(),
-      items: ["Approved", "Pending", "Cancel"].map((e) => DropdownMenuItem(value: e, child: Text(e, style: const TextStyle(fontSize: 12)))).toList(),
+      items: ["Approved", "Pending", "Cancel"]
+          .map(
+            (e) => DropdownMenuItem(
+              value: e,
+              child: Text(e, style: const TextStyle(fontSize: 12)),
+            ),
+          )
+          .toList(),
       onChanged: (val) {},
     ),
   );
