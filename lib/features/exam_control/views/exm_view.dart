@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:poly_manage_systm/features/exam_control/views/seat_plan.dart';
+import '../../../core/constants/colors.dart';
 import '../controllers/exm_controller.dart';
 import 'assign_screen.dart';
 import 'exam_dashboard.dart';
@@ -14,13 +15,13 @@ class ExamView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.amber,
+        backgroundColor: AppColors.primary,
         elevation: 1,
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           "Exam Management System",
           style: TextStyle(
-            color: Color(0xFF003D4D),
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
@@ -52,8 +53,8 @@ class ExamView extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.amber[200],
-              border: Border.all(color: Colors.amber),
+              color: AppColors.primary,
+              border: Border.all(color: AppColors.primary),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
@@ -85,18 +86,18 @@ class ExamView extends StatelessWidget {
         leading: Icon(
           icon,
           color: isSelected
-              ? Colors.black
+              ? Colors.white
               : (isLogout ? Colors.red : Colors.grey),
         ),
         title: Text(
           title,
           style: TextStyle(
             color: isSelected
-                ? Colors.black
+                ? Colors.white
                 : (isLogout ? Colors.red : Colors.black87),
           ),
         ),
-        tileColor: isSelected ?  Colors.amber : Colors.transparent,
+        tileColor: isSelected ?  AppColors.primary : Colors.transparent,
       );
     });
   }

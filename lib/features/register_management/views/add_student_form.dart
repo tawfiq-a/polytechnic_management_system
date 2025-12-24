@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:poly_manage_systm/core/constants/colors.dart';
 
 void showAddStudentForm() {
   Get.bottomSheet(
@@ -219,7 +220,7 @@ Widget _uploadBox() {
         ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            backgroundColor:  Colors.amber,
+            backgroundColor:  AppColors.primary,
           ),
           child: const Text(
             "Browse Files",
@@ -247,7 +248,7 @@ Widget _documentItem(String title) {
         ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.amber,
+            backgroundColor: AppColors.primary,
             minimumSize: const Size(80, 30),
           ),
           child: const Text(

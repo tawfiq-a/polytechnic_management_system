@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/colors.dart';
+
 class DashboardContent extends StatelessWidget {
   const DashboardContent({super.key});
 
@@ -259,8 +261,8 @@ class DashboardContent extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.amber,
-          foregroundColor: Colors.black,
+          backgroundColor: AppColors.primary,
+          foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 12),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           elevation: 0,

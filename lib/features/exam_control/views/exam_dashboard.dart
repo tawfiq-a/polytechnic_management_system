@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/constants/colors.dart';
 import '../controllers/exm_controller.dart';
 
 class DashboardSection extends StatelessWidget {
@@ -19,7 +20,7 @@ class DashboardSection extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(5),
-              border: Border.all(color: Colors.amber, width: 1.5),
+              border: Border.all(color: AppColors.primary, width: 1.5),
             ),
             child: Obx(() => SingleChildScrollView(
               scrollDirection: Axis.horizontal,
