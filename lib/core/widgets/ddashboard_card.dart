@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../constants/colors.dart';
+
 class DashboardCard extends StatelessWidget {
   final String title;
   final IconData icon;
-  final VoidCallback? onTap; // ট্যাপ হ্যান্ডেল করার জন্য কলব্যাক
+  final VoidCallback? onTap;
 
   const DashboardCard({
     super.key,
@@ -19,11 +21,11 @@ class DashboardCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap ?? () {},
         borderRadius: BorderRadius.circular(16),
-        splashColor: Colors.amber.withOpacity(0.2),
-        highlightColor: Colors.amber.withOpacity(0.1),
+        splashColor: Colors.amber.withValues(alpha: 0.2),
+        highlightColor: Colors.amber.withValues(alpha: 0.1),
         child: Ink(
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.amber, width: 2),
+            border: Border.all(color:AppColors.primary, width: 2),
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
             boxShadow: const [
@@ -41,10 +43,10 @@ class DashboardCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.amber,
+                  color: AppColors.primary,
                   shape: BoxShape.circle,
                 ),
-                child: Icon(icon, size: 35, color: Colors.black),
+                child: Icon(icon, size: 35, color: Colors.white),
               ),
               const SizedBox(height: 12),
               Text(

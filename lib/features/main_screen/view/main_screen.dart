@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:poly_manage_systm/core/constants/colors.dart';
 import 'package:poly_manage_systm/features/exam_control/views/exm_view.dart';
 import 'package:poly_manage_systm/features/register_management/views/dash_reg_main.dart';
 
@@ -22,12 +23,12 @@ class MainScreen extends StatelessWidget {
     ];
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber,
+        backgroundColor: AppColors.primary,
         automaticallyImplyLeading: false,
         title: const Text(
           "Polytechnic Management System",
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -99,7 +100,7 @@ class MainScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.amber.shade400,
+                                color: AppColors.primary.withValues(alpha: 0.5),
                                 spreadRadius: 2,
                                 blurRadius: 9,
                               ),

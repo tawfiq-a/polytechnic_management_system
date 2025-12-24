@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:poly_manage_systm/features/register_management/views/show_payment_details.dart';
 
+import '../../../core/constants/colors.dart';
+
 class PaymentContent extends StatelessWidget {
   const PaymentContent({super.key});
 
@@ -140,7 +142,7 @@ class PaymentContent extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () => showPaymentDetailsBottomSheet(),
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.amber,
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           elevation: 0,
           padding: const EdgeInsets.symmetric(horizontal: 12),

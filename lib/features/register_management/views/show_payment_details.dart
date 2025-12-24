@@ -5,7 +5,7 @@ void showPaymentDetailsBottomSheet() {
   Get.bottomSheet(
     isScrollControlled: true,
     Container(
-      height: Get.height * 0.85, // স্ক্রিনের ৮৫% জায়গা নেবে
+      height: Get.height * 0.85,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -16,7 +16,7 @@ void showPaymentDetailsBottomSheet() {
       ),
       child: Column(
         children: [
-          // হেডার: Title এবং Close Icon
+
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Row(
@@ -39,7 +39,7 @@ void showPaymentDetailsBottomSheet() {
           ),
           const Divider(),
 
-          // ফর্ম কন্টেন্ট (Scrollable)
+
           Expanded(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -48,7 +48,7 @@ void showPaymentDetailsBottomSheet() {
                 children: [
                   const SizedBox(height: 15),
 
-                  // ১. Payment Info Section
+
                   _sectionHeader("Payment Info"),
                   _buildTwoColumnRow(
                     _infoField("Payment ID", "123456789"),
@@ -61,7 +61,7 @@ void showPaymentDetailsBottomSheet() {
 
                   const SizedBox(height: 20),
 
-                  // ২. Payment Details Section
+
                   _sectionHeader("Payment Details"),
                   _buildTwoColumnRow(
                     _infoField("Amount", "2500"),
@@ -70,7 +70,7 @@ void showPaymentDetailsBottomSheet() {
 
                   const SizedBox(height: 20),
 
-                  // ৩. Transaction Proof Section
+
                   _sectionHeader("Transaction Proof"),
                   _buildTwoColumnRow(
                     _infoField("Transaction Id", "12345687986"),
@@ -83,13 +83,13 @@ void showPaymentDetailsBottomSheet() {
 
                   const SizedBox(height: 30),
 
-                  // ডাউনলোড বাটন (Bottom Left)
+
                   SizedBox(
                     width: 200,
                     height: 45,
                     child: ElevatedButton(
                       onPressed: () {
-                        // ডাউনলোড লজিক এখানে হবে
+
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF003D4D),
@@ -114,7 +114,7 @@ void showPaymentDetailsBottomSheet() {
   );
 }
 
-// সেকশন টাইটেল উইজেট
+
 Widget _sectionHeader(String title) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 12),
@@ -123,13 +123,13 @@ Widget _sectionHeader(String title) {
       style: const TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.bold,
-        color: Color(0xFF0078AA), // আপনার ইমেজের ব্লু কালার
+        color: Color(0xFF0078AA),
       ),
     ),
   );
 }
 
-// ইনপুট ফিল্ড উইজেট (Read Only Style)
+
 Widget _infoField(String label, String value) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,7 +159,7 @@ Widget _infoField(String label, String value) {
   );
 }
 
-// ২ কলামের রো উইজেট
+
 Widget _buildTwoColumnRow(Widget left, Widget right) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 15),

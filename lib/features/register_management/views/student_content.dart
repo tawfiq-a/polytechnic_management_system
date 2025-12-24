@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/colors.dart';
 import 'add_student_form.dart';
 
 class StudentContent extends StatelessWidget {
@@ -31,7 +32,7 @@ class StudentContent extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor:Colors.amber,
+                backgroundColor:AppColors.primary,
               ),
             ),
           ),
@@ -146,12 +147,12 @@ class StudentContent extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-        backgroundColor:  Colors.amber,
+        backgroundColor:  AppColors.primary,
         elevation: 0,
       ),
       child: const Text(
         "View Details",
-        style: TextStyle(fontSize: 10, color: Colors.black),
+        style: TextStyle(fontSize: 10, color: Colors.white),
       ),
     );
   }

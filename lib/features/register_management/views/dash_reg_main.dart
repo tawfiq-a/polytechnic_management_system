@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:poly_manage_systm/core/constants/colors.dart';
 import 'package:poly_manage_systm/features/register_management/views/payment_content.dart';
 import 'package:poly_manage_systm/features/register_management/views/student_content.dart';
 import '../controllers/dashboard_controller.dart';
@@ -12,17 +13,17 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber,
+        backgroundColor: AppColors.primary,
         title: const Text(
           "Register Management System",
           style: TextStyle(
-            color: Color(0xFF003D4D),
+            color: AppColors.white,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
         ),
         elevation: 1,
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       endDrawer: Drawer(
         child: Column(
@@ -30,8 +31,8 @@ class MainView extends StatelessWidget {
             DrawerHeader(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.amber,
-                  border: Border.all(color: Colors.amber),
+                  color: AppColors.primary,
+                  border: Border.all(color: AppColors.primary),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding: const EdgeInsets.all(10),
@@ -66,12 +67,12 @@ class MainView extends StatelessWidget {
           controller.changeMenu(index);
           Get.back();
         },
-        leading: Icon(icon, color: isSelected ? Colors.black : Colors.amber),
+        leading: Icon(icon, color: isSelected ? Colors.white : AppColors.primary),
         title: Text(
           title,
-          style: TextStyle(color: isSelected ? Colors.black : Colors.black),
+          style: TextStyle(color: isSelected ? Colors.white : Colors.black),
         ),
-        tileColor: isSelected ? Colors.amber : Colors.transparent,
+        tileColor: isSelected ? AppColors.primary : Colors.transparent,
       );
     });
   }

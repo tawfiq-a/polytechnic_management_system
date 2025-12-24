@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:poly_manage_systm/features/main_screen/view/main_screen.dart';
 
+import '../../../core/constants/colors.dart';
 import '../controllers/nav_controller.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -13,7 +14,7 @@ class ChatScreen extends StatelessWidget {
       child: const Center(
         child: Text(
           "Chat Screen",
-          style: TextStyle(fontSize: 30, color: Colors.amber),
+          style: TextStyle(fontSize: 30, color: AppColors.primary),
         ),
       ),
     );
@@ -28,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
       child: const Center(
         child: Text(
           "Profile Screen",
-          style: TextStyle(fontSize: 30, color: Colors.amber),
+          style: TextStyle(fontSize: 30, color: AppColors.primary),
         ),
       ),
     );
@@ -45,7 +46,7 @@ class BottomNavBar extends StatelessWidget {
     return Scaffold(
       extendBody: true,
 
-      backgroundColor: Colors.amber,
+      backgroundColor: AppColors.primary,
 
       body: Obx(() => screens[controller.currentIndex.value]),
 
@@ -54,12 +55,12 @@ class BottomNavBar extends StatelessWidget {
           key: controller.bottomNavigationKey,
           index: controller.currentIndex.value,
           items: const <Widget>[
-            Icon(Icons.wechat_outlined, size: 30),
-            Icon(Icons.dashboard, size: 30),
-            Icon(Icons.perm_identity, size: 30),
+            Icon(Icons.wechat_outlined, size: 30,color: AppColors.white,),
+            Icon(Icons.dashboard, size: 30,color: AppColors.white,),
+            Icon(Icons.perm_identity, size: 30,color: AppColors.white,),
           ],
-          color: Colors.amber,
-          buttonBackgroundColor: Colors.amber,
+          color: AppColors.primary,
+          buttonBackgroundColor: AppColors.primary,
         
           backgroundColor: Colors.transparent,
         

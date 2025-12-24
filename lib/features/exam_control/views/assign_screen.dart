@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/constants/colors.dart';
 import '../controllers/exm_controller.dart';
 
 class AssignScreen extends StatelessWidget {
@@ -44,11 +45,11 @@ class AssignScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.amber,
+                    backgroundColor: AppColors.primary,
                   ),
                   child: const Text(
                     "Browse Files",
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ],
