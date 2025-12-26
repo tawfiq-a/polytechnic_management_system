@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poly_manage_systm/features/register_management/views/show_student_details.dart';
 
 import '../../../core/constants/colors.dart';
 import 'add_student_form.dart';
@@ -145,7 +146,9 @@ class StudentContent extends StatelessWidget {
 
   Widget _actionButton() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        showStudentDetails();
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor:  AppColors.primary,
         elevation: 0,

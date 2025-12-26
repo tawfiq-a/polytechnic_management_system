@@ -2,44 +2,19 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:poly_manage_systm/features/main_screen/view/main_screen.dart';
+import 'package:poly_manage_systm/features/profile/views/profile_views.dart';
 
 import '../../../core/constants/colors.dart';
+import '../../chat/views/chat_screen.dart';
+import '../../chat/views/user_list.dart';
 import '../controllers/nav_controller.dart';
-
-class ChatScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: const Center(
-        child: Text(
-          "Chat Screen",
-          style: TextStyle(fontSize: 30, color: AppColors.primary),
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: const Center(
-        child: Text(
-          "Profile Screen",
-          style: TextStyle(fontSize: 30, color: AppColors.primary),
-        ),
-      ),
-    );
-  }
-}
 
 class BottomNavBar extends StatelessWidget {
   final NavController controller = Get.put(NavController());
 
-  final List<Widget> screens = [ChatScreen(), MainScreen(), ProfileScreen()];
+  final List<Widget> screens = [ChatInboxView(), MainScreen(), ProfileView()];
+
+  BottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {

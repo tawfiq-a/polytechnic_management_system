@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:poly_manage_systm/core/constants/colors.dart';
+import 'package:poly_manage_systm/features/blood_donation/views/blood_donation.dart';
+import 'package:poly_manage_systm/features/campus_location/views/location_view.dart';
 import 'package:poly_manage_systm/features/exam_control/views/exm_view.dart';
 import 'package:poly_manage_systm/features/register_management/views/dash_reg_main.dart';
 
 import '../../../core/widgets/ddashboard_card.dart';
 import '../../library_management/views/library_view.dart';
+import '../../notice/views/notice_view.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -151,21 +154,30 @@ class MainScreen extends StatelessWidget {
                       icon: Icons.account_balance,
                     ),
                     DashboardCard(
-                      onTap: (){
+                      onTap: () {
                         Get.to(() => ExamView());
                       },
                       title: "Exam Management",
                       icon: Icons.calendar_today,
                     ),
                     DashboardCard(
+                      onTap: () {
+                        Get.to(() => AllNoticesView());
+                      },
                       title: "Notice",
                       icon: Icons.notifications_active,
                     ),
                     DashboardCard(
-                      title: "Campus Location",
+                      onTap: () {
+                        Get.to(() => CampusLocationView());
+                      },
+                      title: "Campus Navigator",
                       icon: Icons.location_on_outlined,
                     ),
                     DashboardCard(
+                      onTap: () {
+                        Get.to(() => BloodDonationView());
+                      },
                       title: "Blood Donation",
                       icon: Icons.bloodtype,
                     ),

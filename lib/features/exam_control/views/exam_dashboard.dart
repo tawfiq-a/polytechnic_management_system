@@ -13,7 +13,7 @@ class DashboardSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Resent Upload", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+          const Text("Recent Upload", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
           const SizedBox(height: 20),
           Container(
             width: double.infinity,
