@@ -34,15 +34,35 @@ class SeatPlan extends StatelessWidget {
                   "Drop file or browse",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
+                const SizedBox(height: 5),
+
+                Obx(
+                  () => Text(
+                    controller.selectedFileName.value.isEmpty
+                        ? "Format: .jpeg, .png, PDF & Max file size: 25 MB"
+                        : "Selected: ${controller.selectedFileName.value}",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: controller.selectedFileName.value.isEmpty
+                          ? Colors.grey
+                          : Colors.green,
+                      fontWeight: controller.selectedFileName.value.isEmpty
+                          ? FontWeight.normal
+                          : FontWeight.bold,
+                    ),
+                  ),
+                ),
                 const SizedBox(height: 15),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.pickFile();
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,
                   ),
                   child: const Text(
                     "Browse Files",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: AppColors.white),
                   ),
                 ),
               ],
@@ -57,7 +77,7 @@ class SeatPlan extends StatelessWidget {
               border: Border.all(color: Colors.grey.shade200),
             ),
             child: Obx(
-                  () => Column(
+              () => Column(
                 children: [
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -76,32 +96,32 @@ class SeatPlan extends StatelessWidget {
                           .entries
                           .map(
                             (e) => DataRow(
-                          cells: [
-                            DataCell(Text(e.value['no']!)),
-                            DataCell(Text(e.value['title']!)),
-                            DataCell(Text(e.value['date']!)),
-                            DataCell(
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.edit_note,
-                                    color: Colors.grey,
+                              cells: [
+                                DataCell(Text(e.value['no']!)),
+                                DataCell(Text(e.value['title']!)),
+                                DataCell(Text(e.value['date']!)),
+                                DataCell(
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.edit_note,
+                                        color: Colors.grey,
+                                      ),
+                                      const SizedBox(width: 10),
+                                      GestureDetector(
+                                        onTap: () =>
+                                            controller.deleteRoutineItem(e.key),
+                                        child: const Icon(
+                                          Icons.delete_outline,
+                                          color: Colors.redAccent,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(width: 10),
-                                  GestureDetector(
-                                    onTap: () =>
-                                        controller.deleteRoutineItem(e.key),
-                                    child: const Icon(
-                                      Icons.delete_outline,
-                                      color: Colors.redAccent,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      )
+                          )
                           .toList(),
                     ),
                   ),

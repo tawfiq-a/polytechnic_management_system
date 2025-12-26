@@ -4,9 +4,7 @@ import 'package:poly_manage_systm/core/constants/colors.dart';
 
 import '../controllers/dashboard_controller.dart';
 
-void showAddStudentForm() {
-  final AppController controller = Get.find<AppController>();
-
+void showStudentDetails() {
   Get.bottomSheet(
     Container(
       height: Get.height * 0.9,
@@ -93,35 +91,12 @@ void showAddStudentForm() {
 
                   const SizedBox(height: 30),
                   _sectionTitle("Uploaded Documents"),
-                  _uploadBox(controller), // কন্ট্রোলার পাস করা হয়েছে
                   const SizedBox(height: 15),
                   _documentItem("SSC Certificate"),
                   _documentItem("Birth Certificate"),
                   _documentItem("NID"),
 
                   const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _statusDropdown(controller), // কন্ট্রোলার পাস করা হয়েছে
-                      ElevatedButton(
-                        onPressed: () {
-                          // ডাটা সেভ করার লজিক
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.grey[400],
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 40,
-                            vertical: 15,
-                          ),
-                        ),
-                        child: const Text(
-                          "Add Info",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
@@ -132,8 +107,6 @@ void showAddStudentForm() {
     isScrollControlled: true,
   );
 }
-
-// --- হেল্পার উইজেটগুলো ---
 
 Widget _sectionTitle(String title) {
   return Padding(
@@ -177,6 +150,7 @@ Widget _inputField(String label, String hint, {double? width}) {
         width: width,
         height: 40,
         child: TextField(
+          readOnly: true,
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: const TextStyle(fontSize: 12, color: Colors.grey),
@@ -189,53 +163,6 @@ Widget _inputField(String label, String hint, {double? width}) {
         ),
       ),
     ],
-  );
-}
-
-Widget _uploadBox(AppController controller) {
-  return Container(
-    width: double.infinity,
-    padding: const EdgeInsets.all(20),
-    decoration: BoxDecoration(
-      border: Border.all(color: Colors.grey.shade300),
-      borderRadius: BorderRadius.circular(10),
-    ),
-    child: Column(
-      children: [
-        const Icon(Icons.cloud_upload_outlined, size: 40, color: Colors.grey),
-        const Text(
-          "Drop file or browse",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 5),
-        Obx(
-          () => Text(
-            controller.selectedFileName.value.isEmpty
-                ? "Format: .jpeg, .png, PDF & Max file size: 25 MB"
-                : "Selected: ${controller.selectedFileName.value}",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 12,
-              color: controller.selectedFileName.value.isEmpty
-                  ? Colors.grey
-                  : Colors.green,
-              fontWeight: controller.selectedFileName.value.isEmpty
-                  ? FontWeight.normal
-                  : FontWeight.bold,
-            ),
-          ),
-        ),
-        const SizedBox(height: 15),
-        ElevatedButton(
-          onPressed: () => controller.pickFile(),
-          style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
-          child: const Text(
-            "Browse Files",
-            style: TextStyle(color: AppColors.white),
-          ),
-        ),
-      ],
-    ),
   );
 }
 
@@ -267,31 +194,31 @@ Widget _documentItem(String title) {
   );
 }
 
-Widget _statusDropdown(AppController controller) {
-  return Obx(
-    () => Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-        color: Colors.lightBlue[100],
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: DropdownButton<String>(
-        value: controller.selectedStatus.value,
-        underline: Container(),
-        items: ["Approved", "Pending", "Cancel"]
-            .map(
-              (e) => DropdownMenuItem(
-                value: e,
-                child: Text(e, style: const TextStyle(fontSize: 12)),
-              ),
-            )
-            .toList(),
-        onChanged: (val) {
-          if (val != null) {
-            controller.selectedStatus.value = val;
-          }
-        },
-      ),
-    ),
-  );
-}
+// Widget _statusDropdown(AppController controller) {
+//   return Obx(
+//         () => Container(
+//       padding: const EdgeInsets.symmetric(horizontal: 10),
+//       decoration: BoxDecoration(
+//         color: Colors.lightBlue[100],
+//         borderRadius: BorderRadius.circular(5),
+//       ),
+//       child: DropdownButton<String>(
+//         value: controller.selectedStatus.value,
+//         underline: Container(),
+//         items: ["Approved", "Pending", "Cancel"]
+//             .map(
+//               (e) => DropdownMenuItem(
+//             value: e,
+//             child: Text(e, style: const TextStyle(fontSize: 12)),
+//           ),
+//         )
+//             .toList(),
+//         onChanged: (val) {
+//           if (val != null) {
+//             controller.selectedStatus.value = val;
+//           }
+//         },
+//       ),
+//     ),
+//   );
+// }

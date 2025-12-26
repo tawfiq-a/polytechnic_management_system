@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:poly_manage_systm/features/register_management/views/show_payment_details.dart';
+import 'package:poly_manage_systm/features/register_management/views/show_student_details.dart';
 import '../../../core/constants/colors.dart';
 
 class DashboardContent extends StatelessWidget {
@@ -24,7 +24,6 @@ class DashboardContent extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-
             _buildTableCard(title: "Payment Info", table: _paymentTable()),
 
             const SizedBox(height: 24),
@@ -39,17 +38,16 @@ class DashboardContent extends StatelessWidget {
     );
   }
 
-
   Widget _buildTableCard({required String title, required Widget table}) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.blue.withOpacity(0.2)),
+        border: Border.all(color: Colors.blue.withValues(alpha: 0.2)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: 0.02),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -130,7 +128,6 @@ class DashboardContent extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _studentTable() {
     final List<Map<String, String>> students = [
@@ -218,7 +215,7 @@ class DashboardContent extends StatelessWidget {
                 DataCell(Text(s['shift']!)),
                 DataCell(Text(s['date']!)),
                 DataCell(_statusBadge(s['status']!)),
-                DataCell(_actionButton()),
+                DataCell(_actionButtonStudent()),
               ],
             ),
           )
@@ -254,12 +251,28 @@ class DashboardContent extends StatelessWidget {
     );
   }
 
-
   Widget _actionButton() {
     return SizedBox(
       height: 30,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () => showPaymentDetailsBottomSheet(),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primary,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+          elevation: 0,
+        ),
+        child: const Text("View Details", style: TextStyle(fontSize: 10)),
+      ),
+    );
+  }
+
+  Widget _actionButtonStudent() {
+    return SizedBox(
+      height: 30,
+      child: ElevatedButton(
+        onPressed: () => showStudentDetails(),
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
