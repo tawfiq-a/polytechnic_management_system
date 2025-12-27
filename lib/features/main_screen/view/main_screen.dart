@@ -26,17 +26,40 @@ class MainScreen extends StatelessWidget {
     ];
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.primary,
-        automaticallyImplyLeading: false,
-        title: const Text(
-          "Polytechnic Management System",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
         centerTitle: true,
+        automaticallyImplyLeading: false,
+        backgroundColor: AppColors.primary, // তোমার দরকার মতো বদলাও
+        title: Row(
+          children: [
+            SizedBox(
+              width: 50,
+              height: 50,
+              child: Image.asset("assets/images/img.png"),
+            ),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  "Munshiganj Polytechnic Institute",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "Mirkadim, Munshiganj",
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.white70,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
 
       body: SafeArea(
@@ -47,33 +70,38 @@ class MainScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: Image.asset("assets/images/img.png"),
-                        ),
-                        const SizedBox(width: 10),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Munshiganj Polytechnic Institute",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              "Mirkadim, Munshiganj",
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
+                    // Container(
+                    //   padding: EdgeInsets.all(10),
+                    //   color: AppColors.primary,
+                    //   child: Row(
+                    //     children: [
+                    //       SizedBox(
+                    //         width: 50,
+                    //         height: 50,
+                    //         child: Image.asset("assets/images/img.png"),
+                    //       ),
+                    //       const SizedBox(width: 10),
+                    //       Column(
+                    //         crossAxisAlignment: CrossAxisAlignment.start,
+                    //         children: [
+                    //           Text(
+                    //             "Munshiganj Polytechnic Institute",
+                    //             style: TextStyle(
+                    //               color: Colors.white,
+                    //               fontSize: 18,
+                    //               fontWeight: FontWeight.bold,
+                    //             ),
+                    //           ),
+                    //           Text(
+                    //             "Mirkadim, Munshiganj",
+                    //             style: TextStyle(fontSize: 16,
+                    //               color: Colors.white,),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     Text(
                       "Munshiganj Polytechnic Institute is a government polytechnic institute. It was established in 2006. This institute conducts 4 years Diploma-in-Engineering course under BTEB.  Here are 7 technologies.",
                       style: TextStyle(fontSize: 16),
