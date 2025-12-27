@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:poly_manage_systm/core/constants/colors.dart';
 import '../controllers/profile_controllers.dart';
+import 'about_campus.dart';
+import 'departments.dart';
 import 'edit_profile.dart';
+import 'instructor list.dart';
 
 class ProfileView extends StatelessWidget {
   final controller = Get.put(ProfileController());
@@ -21,11 +24,8 @@ class ProfileView extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         actions: [
-
           IconButton(
-            onPressed: () => Get.to(
-              () => EditProfileView(),
-            ),
+            onPressed: () => Get.to(() => EditProfileView()),
             icon: const Icon(Icons.edit_note, color: Colors.white, size: 28),
           ),
           const SizedBox(width: 10),
@@ -98,9 +98,14 @@ class ProfileView extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(6),
                     decoration: const BoxDecoration(
-                        color: Colors.blue, shape: BoxShape.circle),
-                    child: const Icon(Icons.camera_alt,
-                        color: Colors.white, size: 18),
+                      color: Colors.blue,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.camera_alt,
+                      color: Colors.white,
+                      size: 18,
+                    ),
                   ),
                 ),
               ),
@@ -121,7 +126,6 @@ class ProfileView extends StatelessWidget {
           ),
           const SizedBox(height: 20),
 
-          // রোল, সেমিস্টার, ডিপার্টমেন্ট বক্স
           Container(
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
@@ -141,20 +145,21 @@ class ProfileView extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-          // মেইন এডিট প্রোফাইল বাটন (Option 2)
+
           SizedBox(
             width: 180,
             child: OutlinedButton.icon(
-              onPressed: () => Get.to(
-                () => EditProfileView(),
-              ),
+              onPressed: () => Get.to(() => EditProfileView()),
               icon: const Icon(Icons.edit, size: 16, color: Colors.white),
-              label: const Text("Edit Profile",
-                  style: TextStyle(color: Colors.white)),
+              label: const Text(
+                "Edit Profile",
+                style: TextStyle(color: Colors.white),
+              ),
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: Colors.white54),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
+                  borderRadius: BorderRadius.circular(20),
+                ),
               ),
             ),
           ),
@@ -162,35 +167,6 @@ class ProfileView extends StatelessWidget {
       ),
     );
   }
-
-  // void _showEditDialog(BuildContext context) {
-  //   Get.defaultDialog(
-  //     title: "Edit Profile",
-  //     titleStyle: const TextStyle(fontWeight: FontWeight.bold),
-  //     content: Padding(
-  //       padding: const EdgeInsets.all(10),
-  //       child: Column(
-  //         children: [
-  //           TextField(
-  //               decoration: InputDecoration(
-  //                   labelText: "Full Name",
-  //                   border: OutlineInputBorder(
-  //                       borderRadius: BorderRadius.circular(10)))),
-  //           const SizedBox(height: 15),
-  //           TextField(
-  //               decoration: InputDecoration(
-  //                   labelText: "Semester",
-  //                   border: OutlineInputBorder(
-  //                       borderRadius: BorderRadius.circular(10)))),
-  //         ],
-  //       ),
-  //     ),
-  //     textConfirm: "Save",
-  //     confirmTextColor: Colors.white,
-  //     buttonColor: const Color(0xFF003D4D),
-  //     onConfirm: () => Get.back(),
-  //   );
-  // }
 
   Widget _profileInfoRow(IconData icon, String text) {
     return Row(
@@ -207,39 +183,49 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  // ইনফরমেশন লিস্ট
+
   Widget _buildInfoList() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          _infoTile(Icons.info_outline, "About Campus"),
-          _infoTile(Icons.grid_view_outlined, "Our Departments"),
-          _infoTile(Icons.person_search_outlined, "Instructor List"),
+          _infoTile(Icons.info_outline, "About Campus",(){
+            Get.to(() =>   AboutCampusView());
+          }),
+          _infoTile(Icons.grid_view_outlined, "Our Departments",(){
+            Get.to(() =>   DepartmentListView());
+          }),
+          _infoTile(Icons.person_search_outlined, "Instructor List",(){
+            Get.to(() =>   InstructorListView());
+
+          }),
         ],
       ),
     );
   }
 
-  Widget _infoTile(IconData icon, String title) {
+  Widget _infoTile(IconData icon, String title,VoidCallback onPress) {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
+        border: Border.all(
+          color: AppColors.primary,
+          width: 2,
+        ),
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.02), blurRadius: 5),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.02), blurRadius: 5),
         ],
       ),
       child: ListTile(
         leading: Icon(icon, color: const Color(0xFF003D4D)),
         title: Text(title, style: const TextStyle(fontWeight: FontWeight.w600)),
-        trailing: const Icon(Icons.chevron_right, color: Colors.grey),
-        onTap: () {},
+        trailing: const Icon(Icons.chevron_right, color: AppColors.primary),
+        onTap: onPress,
       ),
     );
   }
-
 
   Widget _buildStatGrid() {
     return Padding(

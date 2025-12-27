@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:poly_manage_systm/core/constants/colors.dart';
 
 import '../controllers/edit_profile_controller.dart';
 
@@ -11,12 +12,13 @@ class EditProfileView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: AppColors.primary,
         elevation: 0,
         title: const Text(
           "Student Profile Info",
           style: TextStyle(
-            color: Color(0xFF003D4D),
+            color: AppColors.white,
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
@@ -116,7 +118,7 @@ class EditProfileView extends StatelessWidget {
             ),
             const SizedBox(height: 30),
 
-            // ৪. আপডেট ও ক্যান্সেল বাটন
+
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -134,7 +136,7 @@ class EditProfileView extends StatelessWidget {
             const Divider(),
             const SizedBox(height: 20),
 
-            // ৫. পাসওয়ার্ড চেঞ্জ সেকশন
+
             const Text(
               "Change password",
               style: TextStyle(
@@ -176,8 +178,8 @@ class EditProfileView extends StatelessWidget {
                       _buildInputLabel("Confirm Password"),
                       _buildPasswordField(
                         "••••••",
-                        controller.isConfirmPassVisible, // এই নামটা মিলিয়ে নাও
-                        controller.toggleConfirmPass, // এই ফাংশন কল করো
+                        controller.isConfirmPassVisible,
+                        controller.toggleConfirmPass,
                       ),
                     ],
                   ),
@@ -222,7 +224,7 @@ class EditProfileView extends StatelessWidget {
     );
   }
 
-  // --- হেল্পার উইজেটগুলো ---
+
 
   Widget _buildInputLabel(String label) {
     return Padding(

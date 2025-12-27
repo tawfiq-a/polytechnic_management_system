@@ -5,12 +5,12 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 class EditProfileController extends GetxController {
   var isOldPassVisible = false.obs;
   var isNewPassVisible = false.obs;
-  var isConfirmPassVisible = false.obs; // এখানে নামটা খেয়াল করো
+  var isConfirmPassVisible = false.obs;
 
   void toggleOldPass() => isOldPassVisible.value = !isOldPassVisible.value;
   void toggleNewPass() => isNewPassVisible.value = !isNewPassVisible.value;
 
-  // এখানে নামটা ঠিক করে দেওয়া হলো
+
   void toggleConfirmPass() => isConfirmPassVisible.value = !isConfirmPassVisible.value;
 
   var selectedImageName = "".obs;
