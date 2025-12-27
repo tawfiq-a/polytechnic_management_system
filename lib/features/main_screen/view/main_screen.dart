@@ -6,11 +6,14 @@ import 'package:poly_manage_systm/core/constants/colors.dart';
 import 'package:poly_manage_systm/features/blood_donation/views/blood_donation.dart';
 import 'package:poly_manage_systm/features/campus_location/views/location_view.dart';
 import 'package:poly_manage_systm/features/exam_control/views/exm_view.dart';
+
 import 'package:poly_manage_systm/features/register_management/views/dash_reg_main.dart';
 
 import '../../../core/widgets/ddashboard_card.dart';
 import '../../library_management/views/library_view.dart';
 import '../../notice/views/notice_view.dart';
+import '../../polytechnic_management/views/main_layout.dart';
+
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -28,7 +31,7 @@ class MainScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         automaticallyImplyLeading: false,
-        backgroundColor: AppColors.primary, // তোমার দরকার মতো বদলাও
+        backgroundColor: AppColors.primary,
         title: Row(
           children: [
             SizedBox(
@@ -164,6 +167,9 @@ class MainScreen extends StatelessWidget {
                   crossAxisSpacing: 20,
                   children: [
                     DashboardCard(
+                      onTap: () {
+                        Get.to(() =>  PolyMain());
+                      },
                       title: "Polytechnic Management",
                       icon: Icons.school,
                     ),
