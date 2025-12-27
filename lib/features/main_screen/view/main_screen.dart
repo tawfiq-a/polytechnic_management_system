@@ -1,75 +1,62 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:poly_manage_systm/core/constants/colors.dart';
+import 'package:poly_manage_systm/features/blood_donation/views/blood_donation.dart';
+import 'package:poly_manage_systm/features/campus_location/views/location_view.dart';
+import 'package:poly_manage_systm/features/exam_control/views/exm_view.dart';
+import 'package:poly_manage_systm/features/register_management/views/dash_reg_main.dart';
 
+import '../../../core/widgets/ddashboard_card.dart';
 import '../../library_management/views/library_view.dart';
+import '../../notice/views/notice_view.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final List<String> imgList = [
+      'assets/images/1.jpeg',
+      'assets/images/2.jpeg',
+      'assets/images/3.jpeg',
+      'assets/images/5.jpeg',
+      'assets/images/4.jpeg',
+    ];
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        automaticallyImplyLeading: false,
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(Icons.menu, color: Colors.white),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          ),
-        ),
-        title: const Text(
-          "MUPI Management System",
-          style: TextStyle(color: Colors.white),
-        ),
         centerTitle: true,
-      ),
-
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
+        automaticallyImplyLeading: false,
+        backgroundColor: AppColors.primary, // তোমার দরকার মতো বদলাও
+        title: Row(
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.black,
-              ),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Text(
-                  'MUPI Menu',
+            SizedBox(
+              width: 50,
+              height: 50,
+              child: Image.asset("assets/images/img.png"),
+            ),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  "Munshiganj Polytechnic Institute",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-            ),
-
-            ListTile(
-              leading: const Icon(Icons.dashboard),
-              title: const Text('Dashboard'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-
-            ListTile(
-              leading: const Icon(Icons.people),
-              title: const Text('Students'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+                Text(
+                  "Mirkadim, Munshiganj",
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.white70,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -79,39 +66,93 @@ class MainScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                width: double.infinity,
+              Padding(
                 padding: const EdgeInsets.all(20),
-                decoration: const BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
-                  ),
-                ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
+                    // Container(
+                    //   padding: EdgeInsets.all(10),
+                    //   color: AppColors.primary,
+                    //   child: Row(
+                    //     children: [
+                    //       SizedBox(
+                    //         width: 50,
+                    //         height: 50,
+                    //         child: Image.asset("assets/images/img.png"),
+                    //       ),
+                    //       const SizedBox(width: 10),
+                    //       Column(
+                    //         crossAxisAlignment: CrossAxisAlignment.start,
+                    //         children: [
+                    //           Text(
+                    //             "Munshiganj Polytechnic Institute",
+                    //             style: TextStyle(
+                    //               color: Colors.white,
+                    //               fontSize: 18,
+                    //               fontWeight: FontWeight.bold,
+                    //             ),
+                    //           ),
+                    //           Text(
+                    //             "Mirkadim, Munshiganj",
+                    //             style: TextStyle(fontSize: 16,
+                    //               color: Colors.white,),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     Text(
-                      "What do you want to check today?",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      "Select a section from the menu",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 13,
-                      ),
+                      "Munshiganj Polytechnic Institute is a government polytechnic institute. It was established in 2006. This institute conducts 4 years Diploma-in-Engineering course under BTEB.  Here are 7 technologies.",
+                      style: TextStyle(fontSize: 16),
+                      textAlign: TextAlign.justify,
                     ),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 80),
+              Center(
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    height: 200.0,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    aspectRatio: 16 / 9,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: const Duration(
+                      milliseconds: 900,
+                    ),
+                    viewportFraction: 0.8,
+                  ),
+                  items: imgList
+                      .map(
+                        (item) => Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.primary.withValues(alpha: 0.5),
+                                spreadRadius: 2,
+                                blurRadius: 9,
+                              ),
+                            ],
+                          ),
+                          margin: const EdgeInsets.all(5.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image.asset(
+                              item,
+                              fit: BoxFit.cover,
+                              width: 1000,
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
+
+              const SizedBox(height: 50),
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -122,85 +163,58 @@ class MainScreen extends StatelessWidget {
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
                   children: [
-                    _DashboardCard(
-                      onTap: (){},
-                      title: "Polytechnic",
+                    DashboardCard(
+                      title: "Polytechnic Management",
                       icon: Icons.school,
                     ),
-                    _DashboardCard(
-                      onTap: (){
-                        Get.to(LibraryManagement());
-                      },
-                      title: "Library  ",
+                    DashboardCard(
+                      title: "Library Management ",
                       icon: Icons.book_outlined,
+                      onTap: () {
+                        Get.to(() => LibraryManagement());
+                      },
                     ),
-                    _DashboardCard(
-                      onTap: (){},
-                      title: "Register ",
+                    DashboardCard(
+                      onTap: () {
+                        Get.to(() => MainView());
+                      },
+                      title: "Register Management",
                       icon: Icons.account_balance,
                     ),
-                    _DashboardCard(
-                      onTap: (){},
-                      title: "Exam",
+                    DashboardCard(
+                      onTap: () {
+                        Get.to(() => ExamView());
+                      },
+                      title: "Exam Management",
                       icon: Icons.calendar_today,
                     ),
-
+                    DashboardCard(
+                      onTap: () {
+                        Get.to(() => AllNoticesView());
+                      },
+                      title: "Notice",
+                      icon: Icons.notifications_active,
+                    ),
+                    DashboardCard(
+                      onTap: () {
+                        Get.to(() => CampusLocationView());
+                      },
+                      title: "Campus Navigator",
+                      icon: Icons.location_on_outlined,
+                    ),
+                    DashboardCard(
+                      onTap: () {
+                        Get.to(() => BloodDonationView());
+                      },
+                      title: "Blood Donation",
+                      icon: Icons.bloodtype,
+                    ),
                   ],
                 ),
               ),
+              const SizedBox(height: 50),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _DashboardCard extends StatelessWidget {
-  final String title;
-  final IconData icon;
-  final VoidCallback? onTap;
-
-
-  const _DashboardCard({
-    required this.title,
-    required this.icon,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.black54 ,
-            width:2
-          ),
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 6,
-              offset: Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 40, color: Colors.black),
-            const SizedBox(height: 10),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
         ),
       ),
     );
