@@ -2,7 +2,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 
 class AppController extends GetxController {
-  // ০ = Dashboard, ১ = Student, ২ = Payment
+  // 0 = Dashboard, 1 = Student, 2 = Payment
   var selectedIndex = 0.obs;
   var selectedFileName = "".obs;
   var selectedStatus = "Approved".obs;

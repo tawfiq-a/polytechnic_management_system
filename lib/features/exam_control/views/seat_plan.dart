@@ -69,7 +69,7 @@ class SeatPlan extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 30),
-          // টেবিল
+
           Container(
             decoration: BoxDecoration(
               color: Colors.white,

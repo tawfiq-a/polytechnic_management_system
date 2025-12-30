@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/colors.dart';
 import 'base/custom_add_issue_bottom_sheet.dart';
 import 'base/custom_edit_issue_bottom_sheet.dart';
+
 class IssueScreen extends StatefulWidget {
   const IssueScreen({super.key});
 
@@ -33,7 +34,9 @@ class _IssueScreenState extends State<IssueScreen> {
 
   List<Map<String, String>> get filteredIssues {
     final query = searchController.text.toLowerCase();
-    return issues.where((issue) => issue['title']!.toLowerCase().contains(query)).toList();
+    return issues
+        .where((issue) => issue['title']!.toLowerCase().contains(query))
+        .toList();
   }
 
   void _showAddIssueSheet() {
@@ -74,7 +77,9 @@ class _IssueScreenState extends State<IssueScreen> {
       context: context,
       builder: (_) => AlertDialog(
         title: const Text("Delete Issue"),
-        content: Text("Are you sure you want to delete '${issues[index]['title']}'?"),
+        content: Text(
+          "Are you sure you want to delete '${issues[index]['title']}'?",
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -108,7 +113,9 @@ class _IssueScreenState extends State<IssueScreen> {
                   decoration: InputDecoration(
                     hintText: 'Search Book Title...',
                     prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                 ),
               ),
@@ -116,8 +123,13 @@ class _IssueScreenState extends State<IssueScreen> {
               ElevatedButton.icon(
                 onPressed: _showAddIssueSheet,
                 icon: const Icon(Icons.add, color: Colors.white),
-                label: const Text('Add Issue', style: TextStyle(color: Colors.white)),
-                style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+                label: const Text(
+                  'Add Issue',
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                ),
               ),
             ],
           ),

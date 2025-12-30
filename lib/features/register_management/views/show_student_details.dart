@@ -193,32 +193,3 @@ Widget _documentItem(String title) {
     ),
   );
 }
-
-// Widget _statusDropdown(AppController controller) {
-//   return Obx(
-//         () => Container(
-//       padding: const EdgeInsets.symmetric(horizontal: 10),
-//       decoration: BoxDecoration(
-//         color: Colors.lightBlue[100],
-//         borderRadius: BorderRadius.circular(5),
-//       ),
-//       child: DropdownButton<String>(
-//         value: controller.selectedStatus.value,
-//         underline: Container(),
-//         items: ["Approved", "Pending", "Cancel"]
-//             .map(
-//               (e) => DropdownMenuItem(
-//             value: e,
-//             child: Text(e, style: const TextStyle(fontSize: 12)),
-//           ),
-//         )
-//             .toList(),
-//         onChanged: (val) {
-//           if (val != null) {
-//             controller.selectedStatus.value = val;
-//           }
-//         },
-//       ),
-//     ),
-//   );
-// }

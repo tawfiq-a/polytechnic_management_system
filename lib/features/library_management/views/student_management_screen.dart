@@ -6,7 +6,8 @@ class StudentManagementScreen extends StatefulWidget {
   const StudentManagementScreen({super.key});
 
   @override
-  State<StudentManagementScreen> createState() => _StudentManagementScreenState();
+  State<StudentManagementScreen> createState() =>
+      _StudentManagementScreenState();
 }
 
 class _StudentManagementScreenState extends State<StudentManagementScreen> {
@@ -35,9 +36,13 @@ class _StudentManagementScreenState extends State<StudentManagementScreen> {
 
   List<Map<String, String>> get filteredStudents {
     final query = searchController.text.toLowerCase();
-    return students.where((s) =>
-    s['name']!.toLowerCase().contains(query) || s['roll']!.contains(query)
-    ).toList();
+    return students
+        .where(
+          (s) =>
+              s['name']!.toLowerCase().contains(query) ||
+              s['roll']!.contains(query),
+        )
+        .toList();
   }
 
   void _showEditStudentSheet(int index) {
@@ -62,9 +67,14 @@ class _StudentManagementScreenState extends State<StudentManagementScreen> {
       context: context,
       builder: (_) => AlertDialog(
         title: const Text("Delete Student"),
-        content: Text("Are you sure you want to delete '${students[index]['name']}'?"),
+        content: Text(
+          "Are you sure you want to delete '${students[index]['name']}'?",
+        ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cancel")),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Cancel"),
+          ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
             onPressed: () {
@@ -90,7 +100,9 @@ class _StudentManagementScreenState extends State<StudentManagementScreen> {
             decoration: InputDecoration(
               hintText: 'Search student name or roll...',
               prefixIcon: const Icon(Icons.search),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
           ),
           const SizedBox(height: 20),
@@ -108,12 +120,20 @@ class _StudentManagementScreenState extends State<StudentManagementScreen> {
                   ),
                   child: ListTile(
                     title: Text("${s['name']} (${s['roll']})"),
-                    subtitle: Text("Dept: ${s['dept']} | Sem: ${s['sem']} | Total: ${s['total']} | Return: ${s['return']} | Running: ${s['running']}"),
+                    subtitle: Text(
+                      "Dept: ${s['dept']} | Sem: ${s['sem']} | Total: ${s['total']} | Return: ${s['return']} | Running: ${s['running']}",
+                    ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        IconButton(icon: const Icon(Icons.edit, color: Colors.blue), onPressed: () => _showEditStudentSheet(index)),
-                        IconButton(icon: const Icon(Icons.delete, color: Colors.red), onPressed: () => _confirmDelete(index)),
+                        IconButton(
+                          icon: const Icon(Icons.edit, color: Colors.blue),
+                          onPressed: () => _showEditStudentSheet(index),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => _confirmDelete(index),
+                        ),
                       ],
                     ),
                   ),

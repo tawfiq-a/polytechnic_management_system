@@ -3,13 +3,8 @@ import 'package:get/get.dart';
 import 'package:poly_manage_systm/core/constants/colors.dart';
 import 'package:poly_manage_systm/features/polytechnic_management/views/instructor_info_view.dart';
 import 'package:poly_manage_systm/features/polytechnic_management/views/student_info.dart';
-import 'package:poly_manage_systm/features/register_management/views/payment_content.dart';
-import 'package:poly_manage_systm/features/register_management/views/student_content.dart';
-
 import '../../profile/views/departments.dart';
-import '../../register_management/views/dashboard_content.dart';
 import '../controllers/drawer_controller.dart';
-
 
 class PolyMain extends StatelessWidget {
   final polyController controller = Get.put(polyController());
@@ -58,7 +53,9 @@ class PolyMain extends StatelessWidget {
       body: Obx(() {
         if (controller.selectedIndex.value == 0) return StudentInfoView();
         if (controller.selectedIndex.value == 1) return InstructorInfoView();
-        if (controller.selectedIndex.value == 2) return const DepartmentListView();
+        if (controller.selectedIndex.value == 2) {
+          return const DepartmentListView();
+        }
         return Container();
       }),
     );
@@ -72,7 +69,10 @@ class PolyMain extends StatelessWidget {
           controller.changeMenu(index);
           Get.back();
         },
-        leading: Icon(icon, color: isSelected ? Colors.white : AppColors.primary),
+        leading: Icon(
+          icon,
+          color: isSelected ? Colors.white : AppColors.primary,
+        ),
         title: Text(
           title,
           style: TextStyle(color: isSelected ? Colors.white : Colors.black),

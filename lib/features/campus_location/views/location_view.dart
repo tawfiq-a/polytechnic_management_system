@@ -13,10 +13,7 @@ class CampusLocationView extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Campus Navigator",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: AppColors.primary,
         elevation: 0,
@@ -24,7 +21,6 @@ class CampusLocationView extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // ১. সার্চ বার
           Padding(
             padding: const EdgeInsets.all(15),
             child: TextField(
@@ -43,7 +39,6 @@ class CampusLocationView extends StatelessWidget {
             ),
           ),
 
-          // ২. লোকেশন লিস্ট
           Expanded(
             child: Obx(
               () => ListView.builder(
@@ -61,7 +56,6 @@ class CampusLocationView extends StatelessWidget {
     );
   }
 
-  // লোকেশন কার্ড ডিজাইন
   Widget _buildLocationCard(Map<String, dynamic> loc) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -127,7 +121,7 @@ class CampusLocationView extends StatelessWidget {
     );
   }
 
-  // ক্যাটাগরি অনুযায়ী আইকন রিটার্ন করার ফাংশন
+
   IconData _getIcon(String category) {
     switch (category) {
       case 'Academic':

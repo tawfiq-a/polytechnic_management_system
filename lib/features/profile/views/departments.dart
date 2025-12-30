@@ -9,14 +9,19 @@ class DepartmentListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final List<Map<String, String>> departments = [
-      {"name": "Computer Science and Technology", "image": "assets/images/cst.jpg"},
+      {
+        "name": "Computer Science and Technology",
+        "image": "assets/images/cst.jpg",
+      },
       {"name": "Electrical Technology", "image": "assets/images/et.jpg"},
       {"name": "Mechanical Technology", "image": "assets/images/mt.jpg"},
       {"name": "Civil Technology", "image": "assets/images/ct.jpeg"},
       {"name": "Electronics Technology", "image": "assets/images/ent.jpg"},
-      {"name": "Refrigeration & AC Technology", "image": "assets/images/rac.jpg"},
+      {
+        "name": "Refrigeration & AC Technology",
+        "image": "assets/images/rac.jpg",
+      },
       {"name": "Electro-medical Technology", "image": "assets/images/emt.jpg"},
     ];
 
@@ -32,12 +37,12 @@ class DepartmentListView extends StatelessWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          Text(
+            Text(
               "Our Departments",
               style: TextStyle(
-                  color: AppColors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20
+                color: AppColors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
               ),
             ),
           ],
@@ -59,7 +64,6 @@ class DepartmentListView extends StatelessWidget {
     );
   }
 
-
   Widget _buildDepartmentCard(Map<String, String> dept) {
     return Container(
       decoration: BoxDecoration(
@@ -76,7 +80,6 @@ class DepartmentListView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-
           Expanded(
             flex: 5,
             child: ClipRRect(
@@ -84,13 +87,9 @@ class DepartmentListView extends StatelessWidget {
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
               ),
-              child: Image.asset(
-                dept['image']!,
-                fit: BoxFit.cover,
-              ),
+              child: Image.asset(dept['image']!, fit: BoxFit.cover),
             ),
           ),
-
 
           Expanded(
             flex: 4,
@@ -105,12 +104,11 @@ class DepartmentListView extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
                     ),
                   ),
-
 
                   SizedBox(
                     width: double.infinity,
@@ -118,7 +116,6 @@ class DepartmentListView extends StatelessWidget {
                     child: OutlinedButton(
                       onPressed: () {
                         Get.to(() => const DeptDetailView());
-
                       },
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(color: AppColors.primary),

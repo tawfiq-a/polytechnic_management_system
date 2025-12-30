@@ -118,7 +118,6 @@ class EditProfileView extends StatelessWidget {
             ),
             const SizedBox(height: 30),
 
-
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -135,7 +134,6 @@ class EditProfileView extends StatelessWidget {
             const SizedBox(height: 40),
             const Divider(),
             const SizedBox(height: 20),
-
 
             const Text(
               "Change password",
@@ -204,7 +202,6 @@ class EditProfileView extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // ৬. চেঞ্জ ও ক্যান্সেল বাটন
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -223,8 +220,6 @@ class EditProfileView extends StatelessWidget {
       ),
     );
   }
-
-
 
   Widget _buildInputLabel(String label) {
     return Padding(

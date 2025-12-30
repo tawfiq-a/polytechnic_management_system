@@ -103,12 +103,12 @@ class InstructorProfileView extends StatelessWidget {
               ),
               const SizedBox(height: 40),
 
-              // ৪. অ্যাকশন বাটনসমূহ (Obx দিয়ে ডাইনামিক করা হয়েছে)
+
               Obx(
                 () => Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // বাম পাশের বাটন (Delete / Cancel)
+
                     _buildActionButton(
                       controller.isEditMode.value ? "Cancel" : "Delete",
                       isOutlined: true,
@@ -116,12 +116,12 @@ class InstructorProfileView extends StatelessWidget {
                         if (controller.isEditMode.value) {
                           controller.toggleEditMode();
                         } else {
-                          // ডিলিট লজিক
+
                         }
                       },
                     ),
                     const SizedBox(width: 20),
-                    // ডান পাশের বাটন (Edit / Update)
+
                     _buildActionButton(
                       controller.isEditMode.value ? "Update" : "Edit",
                       onTap: () {
@@ -142,7 +142,7 @@ class InstructorProfileView extends StatelessWidget {
     );
   }
 
-  // --- হেল্পার উইজেটসমূহ ---
+
 
   Widget _buildAvatar() {
     return Container(

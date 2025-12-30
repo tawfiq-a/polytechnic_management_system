@@ -25,7 +25,10 @@ class SetNewPasswordView extends StatelessWidget {
               const SizedBox(height: 30),
               Container(
                 width: 450,
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                  vertical: 40,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -40,7 +43,6 @@ class SetNewPasswordView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // ৩. পাসওয়ার্ড ফিল্ড
                     const Text(
                       "Password",
                       style: TextStyle(
@@ -54,7 +56,6 @@ class SetNewPasswordView extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    // ৪. কনফার্ম পাসওয়ার্ড ফিল্ড
                     const Text(
                       "Confirm Password",
                       style: TextStyle(
@@ -68,18 +69,23 @@ class SetNewPasswordView extends StatelessWidget {
 
                     const SizedBox(height: 30),
 
-                    // ৫. কন্টিনিউ বাটন
+
                     SizedBox(
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          // পাসওয়ার্ড আপডেট লজিক
-                          Get.snackbar("Success", "Password updated successfully!");
-                          Get.offAllNamed('/login'); // লগইন স্ক্রিনে পাঠিয়ে দেওয়া
+
+                          Get.snackbar(
+                            "Success",
+                            "Password updated successfully!",
+                          );
+                          Get.offAllNamed(
+                            '/login',
+                          );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF003D4D), // থিম কালার
+                          backgroundColor: const Color(0xFF003D4D),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -107,16 +113,19 @@ class SetNewPasswordView extends StatelessWidget {
 
   Widget _buildPasswordField(String hint) {
     return TextField(
-      obscureText: true, // পাসওয়ার্ড ডট আকারে দেখাবে
+      obscureText: true,
       obscuringCharacter: '•',
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: const TextStyle(
-            color: Colors.grey,
-            fontSize: 18,
-            letterSpacing: 2
+          color: Colors.grey,
+          fontSize: 18,
+          letterSpacing: 2,
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 15,
+          vertical: 15,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: Colors.grey.shade300),

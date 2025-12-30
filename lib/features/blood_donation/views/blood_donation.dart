@@ -23,7 +23,7 @@ class BloodDonationView extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // ১. ব্লাড গ্রুপ ফিল্টার বার (Horizontal Scroll)
+
           Container(
             height: 60,
             padding: const EdgeInsets.symmetric(vertical: 10),
@@ -65,7 +65,7 @@ class BloodDonationView extends StatelessWidget {
             ),
           ),
 
-          // ২. ডোনার লিস্ট
+
           Expanded(
             child: Obx(
               () => controller.filteredDonors.isEmpty
@@ -101,7 +101,7 @@ class BloodDonationView extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // ব্লাড গ্রুপ ব্যাজ
+
           Container(
             height: 50,
             width: 50,
@@ -122,7 +122,7 @@ class BloodDonationView extends StatelessWidget {
           ),
           const SizedBox(width: 15),
 
-          // ডোনার ইনফো
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,7 +142,7 @@ class BloodDonationView extends StatelessWidget {
             ),
           ),
 
-          // কল বাটন
+
           IconButton(
             onPressed: () => controller.makeCall(donor['phone']!),
             icon: const Icon(Icons.call, color: Colors.green),

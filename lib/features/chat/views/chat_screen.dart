@@ -15,16 +15,35 @@ class ChatDetailView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        leading: IconButton(icon: const Icon(Icons.arrow_back, color: Colors.black), onPressed: () => Get.back()),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Get.back(),
+        ),
         title: Row(
           children: [
-            CircleAvatar(radius: 18, backgroundImage: NetworkImage(userData['image'])),
+            CircleAvatar(
+              radius: 18,
+              backgroundImage: NetworkImage(userData['image']),
+            ),
             const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(userData['name'], style: const TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold)),
-                Text(userData['online'] ? "Online" : "Offline", style: TextStyle(color: userData['online'] ? Colors.green : Colors.grey, fontSize: 11)),
+                Text(
+                  userData['name'],
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  userData['online'] ? "Online" : "Offline",
+                  style: TextStyle(
+                    color: userData['online'] ? Colors.green : Colors.grey,
+                    fontSize: 11,
+                  ),
+                ),
               ],
             ),
           ],
@@ -32,27 +51,32 @@ class ChatDetailView extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // মেসেজ লিস্ট
+
           Expanded(
-            child: Obx(() => ListView.builder(
-              controller: controller.scrollController,
-              padding: const EdgeInsets.all(15),
-              itemCount: controller.currentMessages.length,
-              itemBuilder: (context, index) {
-                var msg = controller.currentMessages[index];
-                return _buildChatBubble(msg['text'] as String, msg['isMe'] as bool);
-              },
-            )),
+            child: Obx(
+              () => ListView.builder(
+                controller: controller.scrollController,
+                padding: const EdgeInsets.all(15),
+                itemCount: controller.currentMessages.length,
+                itemBuilder: (context, index) {
+                  var msg = controller.currentMessages[index];
+                  return _buildChatBubble(
+                    msg['text'] as String,
+                    msg['isMe'] as bool,
+                  );
+                },
+              ),
+            ),
           ),
 
-          // ইনপুট এরিয়া
+
           _buildInputArea(),
         ],
       ),
     );
   }
 
-  // চ্যাট বাবল উইজেট
+
   Widget _buildChatBubble(String text, bool isMe) {
     return Align(
       alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
@@ -64,17 +88,29 @@ class ChatDetailView extends StatelessWidget {
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(15),
             topRight: const Radius.circular(15),
-            bottomLeft: isMe ? const Radius.circular(15) : const Radius.circular(0),
-            bottomRight: isMe ? const Radius.circular(0) : const Radius.circular(15),
+            bottomLeft: isMe
+                ? const Radius.circular(15)
+                : const Radius.circular(0),
+            bottomRight: isMe
+                ? const Radius.circular(0)
+                : const Radius.circular(15),
           ),
-          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.02), blurRadius: 5)],
+          boxShadow: [
+            BoxShadow(color: Colors.black.withOpacity(0.02), blurRadius: 5),
+          ],
         ),
-        child: Text(text, style: TextStyle(color: isMe ? Colors.white : Colors.black87, fontSize: 14)),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: isMe ? Colors.white : Colors.black87,
+            fontSize: 14,
+          ),
+        ),
       ),
     );
   }
 
-  // ইনপুট এরিয়া ডিজাইন
+
   Widget _buildInputArea() {
     return Container(
       padding: const EdgeInsets.all(10),
@@ -82,7 +118,13 @@ class ChatDetailView extends StatelessWidget {
       child: SafeArea(
         child: Row(
           children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.add_circle_outline, color: Color(0xFF003D4D))),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.add_circle_outline,
+                color: Color(0xFF003D4D),
+              ),
+            ),
             Expanded(
               child: TextField(
                 controller: controller.messageController,
@@ -91,8 +133,14 @@ class ChatDetailView extends StatelessWidget {
                   hintText: "Type message...",
                   filled: true,
                   fillColor: Colors.grey[100],
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide.none),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide.none,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 5,
+                  ),
                 ),
               ),
             ),

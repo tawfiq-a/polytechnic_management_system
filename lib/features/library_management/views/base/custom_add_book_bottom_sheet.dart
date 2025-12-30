@@ -32,7 +32,10 @@ class _AddBookBottomSheetState extends State<AddBookBottomSheet> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Add Book", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                const Text(
+                  "Add Book",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 16),
                 TextField(
                   controller: titleController,
@@ -60,7 +63,10 @@ class _AddBookBottomSheetState extends State<AddBookBottomSheet> {
                     border: OutlineInputBorder(),
                   ),
                   items: ['CST', 'ET', 'ENT', 'RAC', 'EMT']
-                      .map((dept) => DropdownMenuItem(value: dept, child: Text(dept)))
+                      .map(
+                        (dept) =>
+                            DropdownMenuItem(value: dept, child: Text(dept)),
+                      )
                       .toList(),
                   onChanged: (value) => setState(() => selectedDept = value),
                 ),
@@ -72,9 +78,13 @@ class _AddBookBottomSheetState extends State<AddBookBottomSheet> {
                     hintText: "Select semester",
                     border: OutlineInputBorder(),
                   ),
-                  items: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th']
-                      .map((sem) => DropdownMenuItem(value: sem, child: Text(sem)))
-                      .toList(),
+                  items:
+                      ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th']
+                          .map(
+                            (sem) =>
+                                DropdownMenuItem(value: sem, child: Text(sem)),
+                          )
+                          .toList(),
                   onChanged: (value) => setState(() => selectedSem = value),
                 ),
                 const SizedBox(height: 12),
@@ -92,15 +102,22 @@ class _AddBookBottomSheetState extends State<AddBookBottomSheet> {
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                        ),
                         onPressed: () => Navigator.pop(context),
-                        child: const Text("Cancel",style: TextStyle(color: Colors.black),),
+                        child: const Text(
+                          "Cancel",
+                          style: TextStyle(color: Colors.black),
+                        ),
                       ),
                     ),
                     const SizedBox(width: 10),
                     Expanded(
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.primary,
+                        ),
                         onPressed: () {
                           widget.onAdd({
                             'title': titleController.text,
@@ -111,7 +128,10 @@ class _AddBookBottomSheetState extends State<AddBookBottomSheet> {
                           });
                           Navigator.pop(context);
                         },
-                        child: const Text("Add Book",style: TextStyle(color: Colors.white),),
+                        child: const Text(
+                          "Add Book",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ],

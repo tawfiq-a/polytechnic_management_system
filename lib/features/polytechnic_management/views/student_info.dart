@@ -4,7 +4,6 @@ import 'package:poly_manage_systm/features/polytechnic_management/views/student_
 import '../controllers/student_controller.dart';
 
 class StudentInfoView extends StatelessWidget {
-  // কন্ট্রোলার খুঁজে বের করা
   final controller = Get.put(StudentTableController());
 
   StudentInfoView({super.key});
@@ -26,36 +25,6 @@ class StudentInfoView extends StatelessWidget {
           ),
 
           _buildPagination(),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildProfileHeader() {
-    return const Padding(
-      padding: EdgeInsets.only(right: 15),
-      child: Row(
-        children: [
-          CircleAvatar(radius: 15, backgroundColor: Colors.grey),
-          SizedBox(width: 8),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Tanvir",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 11,
-                ),
-              ),
-              Text(
-                "Section Admin",
-                style: TextStyle(color: Colors.grey, fontSize: 9),
-              ),
-            ],
-          ),
         ],
       ),
     );
@@ -96,7 +65,6 @@ class StudentInfoView extends StatelessWidget {
     );
   }
 
-  // ৩. টেবিল কার্ড ফাংশন
   Widget _buildStudentTableCard() {
     return Container(
       decoration: BoxDecoration(
@@ -143,7 +111,6 @@ class StudentInfoView extends StatelessWidget {
     );
   }
 
-  // ৪. ভিউ বাটন ফাংশন
   Widget _viewDetailsButton() {
     return ElevatedButton(
       onPressed: () {
@@ -160,7 +127,6 @@ class StudentInfoView extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _buildPagination() {
     return Container(

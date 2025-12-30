@@ -4,7 +4,6 @@ import '../../../core/constants/colors.dart';
 import 'base/custom_add_return_bottom_sheet.dart';
 import 'base/custom_edit_return_bottom_sheet.dart';
 
-
 class ReturnScreen extends StatefulWidget {
   const ReturnScreen({super.key});
 
@@ -27,7 +26,9 @@ class _ReturnScreenState extends State<ReturnScreen> {
 
   List<Map<String, String>> get filteredReturns {
     final query = searchController.text.toLowerCase();
-    return returns.where((r) => r['roll']!.toLowerCase().contains(query)).toList();
+    return returns
+        .where((r) => r['roll']!.toLowerCase().contains(query))
+        .toList();
   }
 
   void _showAddReturnSheet() {
@@ -68,9 +69,14 @@ class _ReturnScreenState extends State<ReturnScreen> {
       context: context,
       builder: (_) => AlertDialog(
         title: const Text("Delete Return"),
-        content: Text("Are you sure you want to delete return for roll ${returns[index]['roll']}?"),
+        content: Text(
+          "Are you sure you want to delete return for roll ${returns[index]['roll']}?",
+        ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cancel")),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Cancel"),
+          ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
             onPressed: () {
@@ -99,7 +105,9 @@ class _ReturnScreenState extends State<ReturnScreen> {
                   decoration: InputDecoration(
                     hintText: 'Search Student Issue Roll...',
                     prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                 ),
               ),
@@ -107,8 +115,13 @@ class _ReturnScreenState extends State<ReturnScreen> {
               ElevatedButton.icon(
                 onPressed: _showAddReturnSheet,
                 icon: const Icon(Icons.add, color: Colors.white),
-                label: const Text('Add Return', style: TextStyle(color: Colors.white)),
-                style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+                label: const Text(
+                  'Add Return',
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                ),
               ),
             ],
           ),
@@ -127,12 +140,20 @@ class _ReturnScreenState extends State<ReturnScreen> {
                   ),
                   child: ListTile(
                     title: Text("Roll: ${r['roll']} | Code: ${r['code']}"),
-                    subtitle: Text("Dept: ${r['dept']} | Sem: ${r['sem']} | Return: ${r['returnDate']}"),
+                    subtitle: Text(
+                      "Dept: ${r['dept']} | Sem: ${r['sem']} | Return: ${r['returnDate']}",
+                    ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        IconButton(icon: const Icon(Icons.edit, color: Colors.blue), onPressed: () => _showEditReturnSheet(index)),
-                        IconButton(icon: const Icon(Icons.delete, color: Colors.red), onPressed: () => _confirmDelete(index)),
+                        IconButton(
+                          icon: const Icon(Icons.edit, color: Colors.blue),
+                          onPressed: () => _showEditReturnSheet(index),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => _confirmDelete(index),
+                        ),
                       ],
                     ),
                   ),

@@ -67,7 +67,10 @@ class MainView extends StatelessWidget {
           controller.changeMenu(index);
           Get.back();
         },
-        leading: Icon(icon, color: isSelected ? Colors.white : AppColors.primary),
+        leading: Icon(
+          icon,
+          color: isSelected ? Colors.white : AppColors.primary,
+        ),
         title: Text(
           title,
           style: TextStyle(color: isSelected ? Colors.white : Colors.black),

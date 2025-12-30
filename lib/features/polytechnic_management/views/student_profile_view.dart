@@ -34,10 +34,8 @@ class StudentProfileView extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-
               _buildAvatar(),
               const SizedBox(height: 30),
-
 
               _buildInputLabel("Full Name"),
               _buildTextField(controller.nameController),
@@ -122,21 +120,17 @@ class StudentProfileView extends StatelessWidget {
               ),
               const SizedBox(height: 40),
 
-
               Obx(
                 () => Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
                     _buildActionButton(
                       controller.isEditMode.value ? "Cancel" : "Delete",
                       isOutlined: true,
                       onTap: () {
                         if (controller.isEditMode.value) {
                           controller.toggleEditMode();
-                        } else {
-
-                        }
+                        } else {}
                       },
                     ),
                     const SizedBox(width: 20),
@@ -160,8 +154,6 @@ class StudentProfileView extends StatelessWidget {
       ),
     );
   }
-
-  // --- হেল্পার উইজেটসমূহ ---
 
   Widget _buildAvatar() {
     return Container(
@@ -196,8 +188,7 @@ class StudentProfileView extends StatelessWidget {
     return Obx(
       () => TextField(
         controller: textCtrl,
-        enabled:
-            controller.isEditMode.value, // এডিট মোড না থাকলে ইনপুট বন্ধ থাকবে
+        enabled: controller.isEditMode.value,
         decoration: InputDecoration(
           filled: !controller.isEditMode.value,
           fillColor: Colors.grey.shade50,

@@ -27,11 +27,7 @@ class AllNoticesView extends StatelessWidget {
                 fontSize: 22,
               ),
             ),
-            Container(
-              height: 3,
-              width: 40,
-              color: Colors.lightBlue[200],
-            ),
+            Container(height: 3, width: 40, color: Colors.lightBlue[200]),
           ],
         ),
         actions: [_buildFilterMenu()],
@@ -52,13 +48,12 @@ class AllNoticesView extends StatelessWidget {
               ),
             ),
           ),
-          // পেজিনেশন সেকশন
+
           _buildPagination(),
         ],
       ),
     );
   }
-
 
   Widget _buildFilterMenu() {
     return PopupMenuButton<String>(
@@ -91,7 +86,6 @@ class AllNoticesView extends StatelessWidget {
     );
   }
 
-
   Widget _buildNoticeCard(Map<String, String> notice) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -105,7 +99,6 @@ class AllNoticesView extends StatelessWidget {
       ),
       child: Row(
         children: [
-
           Text(
             notice['date']!,
             style: const TextStyle(
@@ -118,7 +111,6 @@ class AllNoticesView extends StatelessWidget {
           const Text("|", style: TextStyle(color: Colors.grey)),
           const SizedBox(width: 10),
 
-
           Expanded(
             child: Text(
               notice['title']!,
@@ -127,7 +119,6 @@ class AllNoticesView extends StatelessWidget {
               style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
             ),
           ),
-
 
           const SizedBox(width: 5),
           ElevatedButton.icon(
@@ -151,7 +142,6 @@ class AllNoticesView extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _buildPagination() {
     return Container(

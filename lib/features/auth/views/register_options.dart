@@ -11,12 +11,11 @@ class RegisterSelectView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100], // হালকা ব্যাকগ্রাউন্ড
+      backgroundColor: Colors.grey[100],
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // ১. টাইটেল
             const Text(
               "Register as a",
               style: TextStyle(
@@ -27,7 +26,6 @@ class RegisterSelectView extends StatelessWidget {
             ),
             const SizedBox(height: 25),
 
-            // ২. সিলেকশন কার্ড
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 50),
               decoration: BoxDecoration(
@@ -44,7 +42,6 @@ class RegisterSelectView extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-
                   _selectionButton("Student", () {
                     controller.setRegistrationType(true);
                     Get.toNamed(AppRoutes.studentRegister);
@@ -64,7 +61,6 @@ class RegisterSelectView extends StatelessWidget {
     );
   }
 
-
   Widget _selectionButton(String label, VoidCallback onTap) {
     return SizedBox(
       width: 130,
@@ -75,16 +71,11 @@ class RegisterSelectView extends StatelessWidget {
           backgroundColor: const Color(0xFF003D4D),
           foregroundColor: Colors.white,
           elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
         child: Text(
           label,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ),
     );

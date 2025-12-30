@@ -2,7 +2,6 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class NoticeController extends GetxController {
-  // ডামি নোটিশ ডেটা
   var notices = List.generate(
     10,
     (index) => {
@@ -19,6 +18,5 @@ class NoticeController extends GetxController {
 
   void changeFilter(String filter) {
     selectedFilter.value = filter;
-    // এখানে ফিল্টার অনুযায়ী ডেটা লোড করার লজিক দিতে পারেন
   }
 }

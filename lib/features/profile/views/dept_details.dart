@@ -12,7 +12,6 @@ class DeptDetailView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             _buildTopBanner(),
 
             Padding(
@@ -20,7 +19,6 @@ class DeptDetailView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   _buildSectionTitle("About Department"),
                   const SizedBox(height: 15),
                   const Text(
@@ -45,10 +43,8 @@ class DeptDetailView extends StatelessWidget {
 
                   const SizedBox(height: 40),
 
-
                   _buildSectionTitle("DEPARTMENT INFORMATION"),
                   const SizedBox(height: 20),
-
 
                   _buildInfoItem(
                     "21-12-2025",
@@ -69,7 +65,6 @@ class DeptDetailView extends StatelessWidget {
     );
   }
 
-
   Widget _buildTopBanner() {
     return Stack(
       children: [
@@ -78,9 +73,7 @@ class DeptDetailView extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(
-                'assets/images/1.jpeg',
-              ),
+              image: AssetImage('assets/images/1.jpeg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(0.6),
@@ -128,7 +121,6 @@ class DeptDetailView extends StatelessWidget {
     );
   }
 
-
   Widget _buildSectionTitle(String title) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +138,6 @@ class DeptDetailView extends StatelessWidget {
       ],
     );
   }
-
 
   Widget _buildInfoItem(String date, String title) {
     return Container(

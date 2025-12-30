@@ -93,7 +93,7 @@ void showAddStudentForm() {
 
                   const SizedBox(height: 30),
                   _sectionTitle("Uploaded Documents"),
-                  _uploadBox(controller), // কন্ট্রোলার পাস করা হয়েছে
+                  _uploadBox(controller),
                   const SizedBox(height: 15),
                   _documentItem("SSC Certificate"),
                   _documentItem("Birth Certificate"),
@@ -103,10 +103,10 @@ void showAddStudentForm() {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _statusDropdown(controller), // কন্ট্রোলার পাস করা হয়েছে
+                      _statusDropdown(controller),
                       ElevatedButton(
                         onPressed: () {
-                          // ডাটা সেভ করার লজিক
+
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.grey[400],
@@ -133,7 +133,7 @@ void showAddStudentForm() {
   );
 }
 
-// --- হেল্পার উইজেটগুলো ---
+
 
 Widget _sectionTitle(String title) {
   return Padding(

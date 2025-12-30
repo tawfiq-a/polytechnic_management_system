@@ -5,7 +5,11 @@ class EditBookBottomSheet extends StatefulWidget {
   final Map<String, String> book;
   final Function(Map<String, String>) onUpdate;
 
-  const EditBookBottomSheet({super.key, required this.book, required this.onUpdate});
+  const EditBookBottomSheet({
+    super.key,
+    required this.book,
+    required this.onUpdate,
+  });
 
   @override
   State<EditBookBottomSheet> createState() => _EditBookBottomSheetState();
@@ -42,7 +46,10 @@ class _EditBookBottomSheetState extends State<EditBookBottomSheet> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("Edit Book", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text(
+                "Edit Book",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               const SizedBox(height: 16),
               TextField(
                 controller: titleController,
@@ -70,7 +77,10 @@ class _EditBookBottomSheetState extends State<EditBookBottomSheet> {
                   border: OutlineInputBorder(),
                 ),
                 items: ['CST', 'ET', 'ENT', 'RAC', 'EMT']
-                    .map((dept) => DropdownMenuItem(value: dept, child: Text(dept)))
+                    .map(
+                      (dept) =>
+                          DropdownMenuItem(value: dept, child: Text(dept)),
+                    )
                     .toList(),
                 onChanged: (value) => setState(() => selectedDept = value),
               ),
@@ -83,7 +93,9 @@ class _EditBookBottomSheetState extends State<EditBookBottomSheet> {
                   border: OutlineInputBorder(),
                 ),
                 items: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th']
-                    .map((sem) => DropdownMenuItem(value: sem, child: Text(sem)))
+                    .map(
+                      (sem) => DropdownMenuItem(value: sem, child: Text(sem)),
+                    )
                     .toList(),
                 onChanged: (value) => setState(() => selectedSem = value),
               ),
@@ -102,15 +114,22 @@ class _EditBookBottomSheetState extends State<EditBookBottomSheet> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                      ),
                       onPressed: () => Navigator.pop(context),
-                      child: const Text("Cancel",style: TextStyle(color: Colors.black),),
+                      child: const Text(
+                        "Cancel",
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                      ),
                       onPressed: () {
                         widget.onUpdate({
                           'title': titleController.text,
@@ -121,7 +140,10 @@ class _EditBookBottomSheetState extends State<EditBookBottomSheet> {
                         });
                         Navigator.pop(context);
                       },
-                      child: const Text("Edit Book",style: TextStyle(color: Colors.white),),
+                      child: const Text(
+                        "Edit Book",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ],
