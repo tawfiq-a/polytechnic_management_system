@@ -42,21 +42,27 @@ class AssignScreen extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 5),
-                // সিলেক্ট করা ফাইলের নাম দেখানোর জন্য (এটি নতুন যুক্ত করা হয়েছে)
-                Obx(() => Text(
-                  controller.selectedFileName.value.isEmpty
-                      ? "Format: .jpeg, .png, PDF & Max file size: 25 MB"
-                      : "Selected: ${controller.selectedFileName.value}",
-                  style: TextStyle(
+
+                Obx(
+                  () => Text(
+                    controller.selectedFileName.value.isEmpty
+                        ? "Format: .jpeg, .png, PDF & Max file size: 25 MB"
+                        : "Selected: ${controller.selectedFileName.value}",
+                    style: TextStyle(
                       fontSize: 12,
-                      color: controller.selectedFileName.value.isEmpty ? Colors.grey : Colors.green,
-                      fontWeight: controller.selectedFileName.value.isEmpty ? FontWeight.normal : FontWeight.bold
+                      color: controller.selectedFileName.value.isEmpty
+                          ? Colors.grey
+                          : Colors.green,
+                      fontWeight: controller.selectedFileName.value.isEmpty
+                          ? FontWeight.normal
+                          : FontWeight.bold,
+                    ),
                   ),
-                )),
+                ),
                 const SizedBox(height: 15),
                 ElevatedButton(
                   onPressed: () {
-                    controller.pickFile(); // এই ফাংশনটি কল হবে
+                    controller.pickFile();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,
@@ -70,7 +76,7 @@ class AssignScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 30),
-          // টেবিল
+
           Container(
             decoration: BoxDecoration(
               color: Colors.white,

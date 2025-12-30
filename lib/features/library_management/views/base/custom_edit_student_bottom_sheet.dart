@@ -5,7 +5,11 @@ class EditStudentBottomSheet extends StatefulWidget {
   final Map<String, String> data;
   final Function(Map<String, String>) onUpdate;
 
-  const EditStudentBottomSheet({super.key, required this.data, required this.onUpdate});
+  const EditStudentBottomSheet({
+    super.key,
+    required this.data,
+    required this.onUpdate,
+  });
 
   @override
   State<EditStudentBottomSheet> createState() => _EditStudentBottomSheetState();
@@ -28,11 +32,20 @@ class _EditStudentBottomSheetState extends State<EditStudentBottomSheet> {
     returnController = TextEditingController(text: widget.data['return']);
 
     selectedDept = widget.data['dept'];
-    List<String> deptItems = ['CST','ET','ENT','RAC','EMT','Computer'];
+    List<String> deptItems = ['CST', 'ET', 'ENT', 'RAC', 'EMT', 'Computer'];
     if (!deptItems.contains(selectedDept)) selectedDept = null;
 
     selectedSem = widget.data['sem'];
-    List<String> semItems = ['1st','2nd','3rd','4th','5th','6th','7th','8th'];
+    List<String> semItems = [
+      '1st',
+      '2nd',
+      '3rd',
+      '4th',
+      '5th',
+      '6th',
+      '7th',
+      '8th',
+    ];
     if (!semItems.contains(selectedSem)) selectedSem = null;
   }
 
@@ -50,37 +63,93 @@ class _EditStudentBottomSheetState extends State<EditStudentBottomSheet> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("Edit Student Info", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text(
+                "Edit Student Info",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               const SizedBox(height: 16),
-              TextField(controller: nameController, decoration: const InputDecoration(labelText: "Name", hintText: "Enter Student Name", border: OutlineInputBorder())),
+              TextField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  labelText: "Name",
+                  hintText: "Enter Student Name",
+                  border: OutlineInputBorder(),
+                ),
+              ),
               const SizedBox(height: 12),
-              TextField(controller: rollController, decoration: const InputDecoration(labelText: "Roll", hintText: "Enter Student Roll Number", border: OutlineInputBorder())),
+              TextField(
+                controller: rollController,
+                decoration: const InputDecoration(
+                  labelText: "Roll",
+                  hintText: "Enter Student Roll Number",
+                  border: OutlineInputBorder(),
+                ),
+              ),
               const SizedBox(height: 12),
               DropdownButtonFormField<String>(
                 value: selectedDept,
-                decoration: const InputDecoration(labelText: "Department", hintText: "Select department", border: OutlineInputBorder()),
-                items: ['CST','ET','ENT','RAC','EMT','Computer'].map((d) => DropdownMenuItem(value: d, child: Text(d))).toList(),
+                decoration: const InputDecoration(
+                  labelText: "Department",
+                  hintText: "Select department",
+                  border: OutlineInputBorder(),
+                ),
+                items: ['CST', 'ET', 'ENT', 'RAC', 'EMT', 'Computer']
+                    .map((d) => DropdownMenuItem(value: d, child: Text(d)))
+                    .toList(),
                 onChanged: (v) => setState(() => selectedDept = v),
               ),
               const SizedBox(height: 12),
               DropdownButtonFormField<String>(
                 value: selectedSem,
-                decoration: const InputDecoration(labelText: "Semester", hintText: "Select semester", border: OutlineInputBorder()),
-                items: ['1st','2nd','3rd','4th','5th','6th','7th','8th'].map((s) => DropdownMenuItem(value: s, child: Text(s))).toList(),
+                decoration: const InputDecoration(
+                  labelText: "Semester",
+                  hintText: "Select semester",
+                  border: OutlineInputBorder(),
+                ),
+                items: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th']
+                    .map((s) => DropdownMenuItem(value: s, child: Text(s)))
+                    .toList(),
                 onChanged: (v) => setState(() => selectedSem = v),
               ),
               const SizedBox(height: 12),
-              TextField(controller: totalController, decoration: const InputDecoration(labelText: "Total Issue", hintText: "000", border: OutlineInputBorder())),
+              TextField(
+                controller: totalController,
+                decoration: const InputDecoration(
+                  labelText: "Total Issue",
+                  hintText: "000",
+                  border: OutlineInputBorder(),
+                ),
+              ),
               const SizedBox(height: 12),
-              TextField(controller: returnController, decoration: const InputDecoration(labelText: "Return Issue", hintText: "000", border: OutlineInputBorder())),
+              TextField(
+                controller: returnController,
+                decoration: const InputDecoration(
+                  labelText: "Return Issue",
+                  hintText: "000",
+                  border: OutlineInputBorder(),
+                ),
+              ),
               const SizedBox(height: 20),
               Row(
                 children: [
-                  Expanded(child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.white), onPressed: () => Navigator.pop(context), child: const Text("Cancel",style: TextStyle(color: Colors.black),))),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text(
+                        "Cancel",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                      ),
                       onPressed: () {
                         widget.onUpdate({
                           'name': nameController.text,
@@ -93,7 +162,10 @@ class _EditStudentBottomSheetState extends State<EditStudentBottomSheet> {
                         });
                         Navigator.pop(context);
                       },
-                      child: const Text("Update",style: TextStyle(color: Colors.white),),
+                      child: const Text(
+                        "Update",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ],

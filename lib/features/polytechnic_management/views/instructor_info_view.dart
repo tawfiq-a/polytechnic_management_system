@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:poly_manage_systm/features/polytechnic_management/views/student_profile_view.dart';
 import '../controllers/instructor_controller.dart';
 import 'instructor_profile_view.dart';
 

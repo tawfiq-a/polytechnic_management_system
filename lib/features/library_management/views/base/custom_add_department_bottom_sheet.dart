@@ -7,7 +7,8 @@ class AddDepartmentBottomSheet extends StatefulWidget {
   const AddDepartmentBottomSheet({super.key, required this.onAdd});
 
   @override
-  State<AddDepartmentBottomSheet> createState() => _AddDepartmentBottomSheetState();
+  State<AddDepartmentBottomSheet> createState() =>
+      _AddDepartmentBottomSheetState();
 }
 
 class _AddDepartmentBottomSheetState extends State<AddDepartmentBottomSheet> {
@@ -28,24 +29,60 @@ class _AddDepartmentBottomSheetState extends State<AddDepartmentBottomSheet> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("Add Department", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text(
+                "Add Department",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               const SizedBox(height: 16),
-              TextField(controller: nameController, decoration: const InputDecoration(labelText: "Name", hintText: "Enter Name", border: OutlineInputBorder())),
+              TextField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  labelText: "Name",
+                  hintText: "Enter Name",
+                  border: OutlineInputBorder(),
+                ),
+              ),
               const SizedBox(height: 12),
-              TextField(controller: shortController, decoration: const InputDecoration(labelText: "Short Name", hintText: "Enter Short Name", border: OutlineInputBorder())),
+              TextField(
+                controller: shortController,
+                decoration: const InputDecoration(
+                  labelText: "Short Name",
+                  hintText: "Enter Short Name",
+                  border: OutlineInputBorder(),
+                ),
+              ),
               const SizedBox(height: 20),
               Row(
                 children: [
-                  Expanded(child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.white), onPressed: () => Navigator.pop(context), child: const Text("Cancel",style: TextStyle(color: Colors.black),))),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text(
+                        "Cancel",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                      ),
                       onPressed: () {
-                        widget.onAdd({'name': nameController.text, 'short': shortController.text});
+                        widget.onAdd({
+                          'name': nameController.text,
+                          'short': shortController.text,
+                        });
                         Navigator.pop(context);
                       },
-                      child: const Text("Add Department",style: TextStyle(color: Colors.white),),
+                      child: const Text(
+                        "Add Department",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ],

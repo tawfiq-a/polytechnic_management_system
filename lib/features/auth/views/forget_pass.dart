@@ -28,7 +28,7 @@ class ForgotPasswordView extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // ১. হেডার টাইটেল
+
               const Text(
                 "Forgot Password",
                 style: TextStyle(

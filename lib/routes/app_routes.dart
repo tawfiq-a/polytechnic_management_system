@@ -11,9 +11,4 @@ class AppRoutes {
   static const registerSelect = '/RegisterSelect';
   static const studentRegister = '/StudentRegister';
   static const instructorRegister = '/InstructorRegister';
-
-
-
-
-
 }

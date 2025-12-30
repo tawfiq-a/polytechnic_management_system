@@ -10,13 +10,15 @@ class EditProfileController extends GetxController {
   void toggleOldPass() => isOldPassVisible.value = !isOldPassVisible.value;
   void toggleNewPass() => isNewPassVisible.value = !isNewPassVisible.value;
 
-
-  void toggleConfirmPass() => isConfirmPassVisible.value = !isConfirmPassVisible.value;
+  void toggleConfirmPass() =>
+      isConfirmPassVisible.value = !isConfirmPassVisible.value;
 
   var selectedImageName = "".obs;
 
   Future<void> pickProfileImage() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(type: FileType.image);
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.image,
+    );
     if (result != null) {
       selectedImageName.value = result.files.single.name;
     }

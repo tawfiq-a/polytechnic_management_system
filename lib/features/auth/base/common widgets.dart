@@ -9,7 +9,6 @@ import '../controllers/register_controller.dart';
 import '../views/sign_in.dart';
 
 extension CommonWidgets on StatelessWidget {
-  // হেডার ডিজাইন
   Widget buildHeader(String title, String subtitle) {
     return Column(
       children: [
@@ -71,7 +70,6 @@ extension CommonWidgets on StatelessWidget {
     );
   }
 
-  // পাসওয়ার্ড সেকশন (উভয় ভিউতে এক)
   Widget buildPasswordSection() {
     final controller = Get.find<RegisterController>();
     return Row(
@@ -151,7 +149,6 @@ extension CommonWidgets on StatelessWidget {
     );
   }
 
-  // ক্রিয়েট বাটন
   Widget buildCreateButton() {
     final controller = Get.find<RegisterController>();
     return SizedBox(
@@ -171,7 +168,6 @@ extension CommonWidgets on StatelessWidget {
     );
   }
 
-  // ফুটার
   Widget buildFooter() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

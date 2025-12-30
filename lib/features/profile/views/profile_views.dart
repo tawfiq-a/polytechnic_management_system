@@ -35,13 +35,9 @@ class ProfileView extends StatelessWidget {
         child: Column(
           children: [
             _buildProfileHeader(context),
-
             const SizedBox(height: 20),
-
             _buildInfoList(),
-
             const SizedBox(height: 25),
-
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Align(
@@ -145,7 +141,6 @@ class ProfileView extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-
           SizedBox(
             width: 180,
             child: OutlinedButton.icon(
@@ -183,35 +178,30 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-
   Widget _buildInfoList() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          _infoTile(Icons.info_outline, "About Campus",(){
-            Get.to(() =>   AboutCampusView());
+          _infoTile(Icons.info_outline, "About Campus", () {
+            Get.to(() => AboutCampusView());
           }),
-          _infoTile(Icons.grid_view_outlined, "Our Departments",(){
-            Get.to(() =>   DepartmentListView());
+          _infoTile(Icons.grid_view_outlined, "Our Departments", () {
+            Get.to(() => DepartmentListView());
           }),
-          _infoTile(Icons.person_search_outlined, "Instructor List",(){
-            Get.to(() =>   InstructorListView());
-
+          _infoTile(Icons.person_search_outlined, "Instructor List", () {
+            Get.to(() => InstructorListView());
           }),
         ],
       ),
     );
   }
 
-  Widget _infoTile(IconData icon, String title,VoidCallback onPress) {
+  Widget _infoTile(IconData icon, String title, VoidCallback onPress) {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(
-          color: AppColors.primary,
-          width: 2,
-        ),
+        border: Border.all(color: AppColors.primary, width: 2),
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [

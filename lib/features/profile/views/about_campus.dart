@@ -10,12 +10,9 @@ class AboutCampusView extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF8F9FA),
       appBar: AppBar(
-        title:  Text(
+        title: Text(
           "About Campus",
-          style: TextStyle(
-            color: AppColors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: AppColors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: AppColors.primary,
         elevation: 0.5,
@@ -35,10 +32,7 @@ class AboutCampusView extends StatelessWidget {
             Center(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  "assets/images/img.png",
-                  fit: BoxFit.cover,
-                ),
+                child: Image.asset("assets/images/img.png", fit: BoxFit.cover),
               ),
             ),
             const SizedBox(height: 15),
@@ -82,7 +76,6 @@ class AboutCampusView extends StatelessWidget {
     );
   }
 
-
   Widget _buildSectionTitle(String title) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +94,6 @@ class AboutCampusView extends StatelessWidget {
     );
   }
 
-
   Widget _buildGalleryGrid() {
     return Column(
       children: [
@@ -109,25 +101,16 @@ class AboutCampusView extends StatelessWidget {
           children: [
             Expanded(
               flex: 2,
-              child: _galleryImage(
-                'assets/images/4.jpeg',
-                height: 250,
-              ),
+              child: _galleryImage('assets/images/4.jpeg', height: 250),
             ),
             const SizedBox(width: 8),
             Expanded(
               flex: 2,
               child: Column(
                 children: [
-                  _galleryImage(
-                    'assets/images/1.jpeg',
-                    height: 121,
-                  ),
+                  _galleryImage('assets/images/1.jpeg', height: 121),
                   const SizedBox(height: 8),
-                  _galleryImage(
-                    'assets/images/2.jpeg',
-                    height: 121,
-                  ),
+                  _galleryImage('assets/images/2.jpeg', height: 121),
                 ],
               ),
             ),
@@ -136,26 +119,11 @@ class AboutCampusView extends StatelessWidget {
         const SizedBox(height: 8),
         Row(
           children: [
-            Expanded(
-              child: _galleryImage(
-                'assets/images/3.jpeg',
-                height: 120,
-              ),
-            ),
+            Expanded(child: _galleryImage('assets/images/3.jpeg', height: 120)),
             const SizedBox(width: 8),
-            Expanded(
-              child: _galleryImage(
-                'assets/images/5.jpeg',
-                height: 120,
-              ),
-            ),
+            Expanded(child: _galleryImage('assets/images/5.jpeg', height: 120)),
             const SizedBox(width: 8),
-            Expanded(
-              child: _galleryImage(
-                'assets/images/4.jpeg',
-                height: 120,
-              ),
-            ),
+            Expanded(child: _galleryImage('assets/images/4.jpeg', height: 120)),
           ],
         ),
       ],
@@ -168,7 +136,6 @@ class AboutCampusView extends StatelessWidget {
       child: Image.asset(url, height: height, fit: BoxFit.cover),
     );
   }
-
 
   Widget _buildVideoSection() {
     return Stack(

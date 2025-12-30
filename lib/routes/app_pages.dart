@@ -20,9 +20,9 @@ class AppPages {
     GetPage(name: AppRoutes.setNewPass, page: () => SetNewPasswordView()),
     GetPage(name: AppRoutes.registerSelect, page: () => RegisterSelectView()),
     GetPage(name: AppRoutes.studentRegister, page: () => StudentRegisterView()),
-    GetPage(name: AppRoutes.instructorRegister, page: () => InstructorRegisterView()),
-
-
-
+    GetPage(
+      name: AppRoutes.instructorRegister,
+      page: () => InstructorRegisterView(),
+    ),
   ];
 }

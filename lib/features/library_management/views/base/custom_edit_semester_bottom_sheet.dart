@@ -5,10 +5,15 @@ class EditSemesterBottomSheet extends StatefulWidget {
   final Map<String, String> data;
   final Function(Map<String, String>) onUpdate;
 
-  const EditSemesterBottomSheet({super.key, required this.data, required this.onUpdate});
+  const EditSemesterBottomSheet({
+    super.key,
+    required this.data,
+    required this.onUpdate,
+  });
 
   @override
-  State<EditSemesterBottomSheet> createState() => _EditSemesterBottomSheetState();
+  State<EditSemesterBottomSheet> createState() =>
+      _EditSemesterBottomSheetState();
 }
 
 class _EditSemesterBottomSheetState extends State<EditSemesterBottomSheet> {
@@ -35,7 +40,10 @@ class _EditSemesterBottomSheetState extends State<EditSemesterBottomSheet> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Edit Semester", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const Text(
+              "Edit Semester",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 16),
             TextField(
               controller: nameController,
@@ -59,15 +67,22 @@ class _EditSemesterBottomSheetState extends State<EditSemesterBottomSheet> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                    ),
                     onPressed: () => Navigator.pop(context),
-                    child: const Text("Cancel",style: TextStyle(color: Colors.black),),
+                    child: const Text(
+                      "Cancel",
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                    ),
                     onPressed: () {
                       widget.onUpdate({
                         'name': nameController.text,
@@ -75,7 +90,10 @@ class _EditSemesterBottomSheetState extends State<EditSemesterBottomSheet> {
                       });
                       Navigator.pop(context);
                     },
-                    child: const Text("Update",style: TextStyle(color: Colors.white),),
+                    child: const Text(
+                      "Update",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ],

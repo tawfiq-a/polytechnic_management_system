@@ -25,9 +25,7 @@ class CustomDrawer extends StatelessWidget {
               border: Border.all(color: AppColors.primary),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Center(
-              child: Image.asset("assets/images/img.png"),
-            ),
+            child: Center(child: Image.asset("assets/images/img.png")),
           ),
 
           // Dashboard
@@ -36,7 +34,10 @@ class CustomDrawer extends StatelessWidget {
           // Book Management with sub-items
           ExpansionTile(
             leading: const Icon(Icons.book, color: Colors.black),
-            title: const Text("Book Management", style: TextStyle(color: Colors.black)),
+            title: const Text(
+              "Book Management",
+              style: TextStyle(color: Colors.black),
+            ),
             children: [
               _drawerItem(10, Icons.add, "Add Book", isSubItem: true),
               _drawerItem(11, Icons.edit, "Edit Book", isSubItem: true),
@@ -50,28 +51,40 @@ class CustomDrawer extends StatelessWidget {
           // Categories with sub-items
           ExpansionTile(
             leading: const Icon(Icons.category, color: Colors.black),
-            title: const Text("Categories", style: TextStyle(color: Colors.black)),
+            title: const Text(
+              "Categories",
+              style: TextStyle(color: Colors.black),
+            ),
             children: [
-              _drawerItem(12, Icons.apartment, "Add Department", isSubItem: true),
-              _drawerItem(13, Icons.date_range, "Add Semester", isSubItem: true),
+              _drawerItem(
+                12,
+                Icons.apartment,
+                "Add Department",
+                isSubItem: true,
+              ),
+              _drawerItem(
+                13,
+                Icons.date_range,
+                "Add Semester",
+                isSubItem: true,
+              ),
             ],
           ),
 
           // Student Management
           _drawerItem(3, Icons.people, "Student Management"),
-
         ],
       ),
     );
   }
 
   Widget _drawerItem(
-      int index,
-      IconData icon,
-      String title, {
-        bool isLogout = false,
-        bool isSubItem = false,
-      }) {
+    int index,
+    IconData icon,
+    String title, {
+    bool isLogout = false,
+    bool isSubItem = false,
+  }) {
     final bool isSelected = selectedIndex == index;
     return Container(
       margin: EdgeInsets.symmetric(horizontal: isSubItem ? 30 : 8, vertical: 4),
@@ -88,12 +101,16 @@ class CustomDrawer extends StatelessWidget {
         },
         leading: Icon(
           icon,
-          color: isSelected ? Colors.white : (isLogout ? Colors.red : Colors.grey),
+          color: isSelected
+              ? Colors.white
+              : (isLogout ? Colors.red : Colors.grey),
         ),
         title: Text(
           title,
           style: TextStyle(
-            color: isSelected ? Colors.white : (isLogout ? Colors.red : Colors.black87),
+            color: isSelected
+                ? Colors.white
+                : (isLogout ? Colors.red : Colors.black87),
           ),
         ),
       ),

@@ -21,14 +21,62 @@ class _LibraryManagementState extends State<LibraryManagement> {
   int selectedIndex = 0;
 
   final List<Map<String, String>> books = [
-    {'title': 'Physics -II', 'code': '28545', 'copies': '100', 'dept': 'CST', 'sem': '7th'},
-    {'title': 'Mathematics-III', 'code': '28545', 'copies': '264', 'dept': 'ENT', 'sem': '3rd'},
-    {'title': 'Python Programming', 'code': '28545', 'copies': '150', 'dept': 'CST', 'sem': '6th'},
-    {'title': 'Mathematics-III', 'code': '28545', 'copies': '264', 'dept': 'ENT', 'sem': '3rd'},
-    {'title': 'Graphics Design-I', 'code': '28545', 'copies': '48', 'dept': 'ET', 'sem': '5th'},
-    {'title': 'Python Programming', 'code': '28545', 'copies': '150', 'dept': 'CST', 'sem': '6th'},
-    {'title': 'Mathematics-III', 'code': '28545', 'copies': '264', 'dept': 'ENT', 'sem': '3rd'},
-    {'title': 'Python Programming', 'code': '28545', 'copies': '150', 'dept': 'CST', 'sem': '6th'},
+    {
+      'title': 'Physics -II',
+      'code': '28545',
+      'copies': '100',
+      'dept': 'CST',
+      'sem': '7th',
+    },
+    {
+      'title': 'Mathematics-III',
+      'code': '28545',
+      'copies': '264',
+      'dept': 'ENT',
+      'sem': '3rd',
+    },
+    {
+      'title': 'Python Programming',
+      'code': '28545',
+      'copies': '150',
+      'dept': 'CST',
+      'sem': '6th',
+    },
+    {
+      'title': 'Mathematics-III',
+      'code': '28545',
+      'copies': '264',
+      'dept': 'ENT',
+      'sem': '3rd',
+    },
+    {
+      'title': 'Graphics Design-I',
+      'code': '28545',
+      'copies': '48',
+      'dept': 'ET',
+      'sem': '5th',
+    },
+    {
+      'title': 'Python Programming',
+      'code': '28545',
+      'copies': '150',
+      'dept': 'CST',
+      'sem': '6th',
+    },
+    {
+      'title': 'Mathematics-III',
+      'code': '28545',
+      'copies': '264',
+      'dept': 'ENT',
+      'sem': '3rd',
+    },
+    {
+      'title': 'Python Programming',
+      'code': '28545',
+      'copies': '150',
+      'dept': 'CST',
+      'sem': '6th',
+    },
   ];
 
   Widget _buildBody() {
@@ -39,11 +87,16 @@ class _LibraryManagementState extends State<LibraryManagement> {
         return _addBookScreen();
       case 11:
         return _editBookScreen();
-      case 1: return IssueScreen();
-      case 2: return ReturnScreen();
-      case 12: return AddDepartmentScreen();
-      case 13: return AddSemesterScreen();
-      case 3: return StudentManagementScreen();
+      case 1:
+        return IssueScreen();
+      case 2:
+        return ReturnScreen();
+      case 12:
+        return AddDepartmentScreen();
+      case 13:
+        return AddSemesterScreen();
+      case 3:
+        return StudentManagementScreen();
       default:
         return const Center(child: Text("Coming Soon..."));
     }
@@ -65,7 +118,8 @@ class _LibraryManagementState extends State<LibraryManagement> {
             child: ListTile(
               title: Text(book['title']!),
               subtitle: Text(
-                  'Code: ${book['code']} | Copies: ${book['copies']} | Dept: ${book['dept']} | Semester: ${book['sem']}'),
+                'Code: ${book['code']} | Copies: ${book['copies']} | Dept: ${book['dept']} | Semester: ${book['sem']}',
+              ),
             ),
           );
         },
@@ -85,7 +139,9 @@ class _LibraryManagementState extends State<LibraryManagement> {
                   decoration: InputDecoration(
                     hintText: 'Search Books...',
                     prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                 ),
               ),
@@ -97,7 +153,9 @@ class _LibraryManagementState extends State<LibraryManagement> {
                     isScrollControlled: true,
                     backgroundColor: Colors.white,
                     shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(16),
+                      ),
                     ),
                     builder: (_) => AddBookBottomSheet(
                       onAdd: (newBook) {
@@ -107,8 +165,13 @@ class _LibraryManagementState extends State<LibraryManagement> {
                   );
                 },
                 icon: const Icon(Icons.add, color: Colors.white),
-                label: const Text('Add Book', style: TextStyle(color: Colors.white)),
-                style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+                label: const Text(
+                  'Add Book',
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                ),
               ),
             ],
           ),
@@ -127,7 +190,8 @@ class _LibraryManagementState extends State<LibraryManagement> {
                   child: ListTile(
                     title: Text(book['title']!),
                     subtitle: Text(
-                        'Code: ${book['code']} | Copies: ${book['copies']} | Dept: ${book['dept']} | Semester: ${book['sem']}'),
+                      'Code: ${book['code']} | Copies: ${book['copies']} | Dept: ${book['dept']} | Semester: ${book['sem']}',
+                    ),
                   ),
                 );
               },
@@ -154,7 +218,8 @@ class _LibraryManagementState extends State<LibraryManagement> {
             child: ListTile(
               title: Text(book['title']!),
               subtitle: Text(
-                  'Code: ${book['code']} | Copies: ${book['copies']} | Dept: ${book['dept']} | Semester: ${book['sem']}'),
+                'Code: ${book['code']} | Copies: ${book['copies']} | Dept: ${book['dept']} | Semester: ${book['sem']}',
+              ),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -166,7 +231,9 @@ class _LibraryManagementState extends State<LibraryManagement> {
                         isScrollControlled: true,
                         backgroundColor: Colors.white,
                         shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(16),
+                          ),
                         ),
                         builder: (_) => EditBookBottomSheet(
                           book: book,
@@ -184,19 +251,29 @@ class _LibraryManagementState extends State<LibraryManagement> {
                         context: context,
                         builder: (_) => AlertDialog(
                           title: const Text("Delete Book"),
-                          content: Text("Are you sure you want to delete '${book['title']}'?"),
+                          content: Text(
+                            "Are you sure you want to delete '${book['title']}'?",
+                          ),
                           actions: [
                             TextButton(
                               onPressed: () => Navigator.pop(context),
-                              child: const Text("Cancel",style: TextStyle(color: Colors.black),),
+                              child: const Text(
+                                "Cancel",
+                                style: TextStyle(color: Colors.black),
+                              ),
                             ),
                             ElevatedButton(
-                              style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.primary,
+                              ),
                               onPressed: () {
                                 setState(() => books.removeAt(index));
                                 Navigator.pop(context);
                               },
-                              child: const Text("Delete",style: TextStyle(color: Colors.white),),
+                              child: const Text(
+                                "Delete",
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ],
                         ),
@@ -218,7 +295,10 @@ class _LibraryManagementState extends State<LibraryManagement> {
       key: _scaffoldKey,
       appBar: AppBar(
         leading: BackButton(color: Colors.white),
-        title: const Text('Library Management', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Library Management',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: AppColors.primary,
         actions: [
           IconButton(

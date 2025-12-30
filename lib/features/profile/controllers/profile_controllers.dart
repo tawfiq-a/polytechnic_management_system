@@ -1,10 +1,9 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
-class ProfileController extends
-GetxController {
-  // ডামি ইউজার ডাটা
+class ProfileController extends GetxController {
   var userData = {
+    // Dummy data
     "name": "Mir Tawfiq Al Sayem",
     "email": "tawfiq.cst@gmail.com",
     "roll": "651087",
