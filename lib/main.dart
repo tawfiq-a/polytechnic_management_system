@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:poly_manage_systm/features/main_screen/view/nav_bar.dart';
 import 'package:poly_manage_systm/routes/app_pages.dart';
+import 'package:poly_manage_systm/splash_screen.dart';
 
 import 'features/auth/views/sign_in.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'poly_manage_system',
       debugShowCheckedModeBanner: false,
-      home: LoginView(),
+      home: SplashScreen(),
       getPages: AppPages.appPages(),
     );
   }
