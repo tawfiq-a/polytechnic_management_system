@@ -4,7 +4,8 @@ import '../base/common widgets.dart';
 import '../controllers/register_controller.dart';
 
 class StudentRegisterView extends StatelessWidget {
-  final controller = Get.find<RegisterController>();
+  final controller = Get.put(RegisterController());
+
 
   StudentRegisterView({super.key});
 

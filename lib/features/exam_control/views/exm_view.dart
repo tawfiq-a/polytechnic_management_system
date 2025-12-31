@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:poly_manage_systm/features/exam_control/views/seat_plan.dart';
 import '../../../core/constants/colors.dart';
 import '../controllers/exm_controller.dart';
-import 'assign_screen.dart';
+
 import 'exam_dashboard.dart';
 import 'exam_routine_content.dart';
 
@@ -19,7 +19,7 @@ class ExamView extends StatelessWidget {
         elevation: 1,
         iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
-          "Exam Management System",
+          "Exam System",
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -38,8 +38,6 @@ class ExamView extends StatelessWidget {
             return RoutineSection();
           case 2:
             return SeatPlan();
-          case 3:
-            return AssignScreen();
           default:
             return const Center(child: Text("Coming Soon..."));
         }
@@ -64,9 +62,7 @@ class ExamView extends StatelessWidget {
           _drawerTile(0, Icons.grid_view_rounded, "Dashboards"),
           _drawerTile(1, Icons.assignment_outlined, "Exam Routine"),
           _drawerTile(2, Icons.event_seat_outlined, "Manage Set Plan"),
-          _drawerTile(3, Icons.person_add_alt_1_outlined, "Assign"),
           const Spacer(),
-          _drawerTile(-1, Icons.logout, "Log out", isLogout: true),
           const SizedBox(height: 20),
         ],
       ),

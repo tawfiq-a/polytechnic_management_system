@@ -3,17 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:poly_manage_systm/core/constants/colors.dart';
+import 'package:poly_manage_systm/features/attendance/views/attendance_view.dart';
 import 'package:poly_manage_systm/features/blood_donation/views/blood_donation.dart';
 import 'package:poly_manage_systm/features/campus_location/views/location_view.dart';
+import 'package:poly_manage_systm/features/cgpa_calculator/views/calculator_view.dart';
 import 'package:poly_manage_systm/features/exam_control/views/exm_view.dart';
-
-import 'package:poly_manage_systm/features/register_management/views/dash_reg_main.dart';
-
+import 'package:poly_manage_systm/features/library_management/views/lib_view.dart';
+import 'package:poly_manage_systm/features/register_management/views/accounts_main_view.dart';
 import '../../../core/widgets/ddashboard_card.dart';
-import '../../library_management/views/library_view.dart';
 import '../../notice/views/notice_view.dart';
-import '../../polytechnic_management/views/main_layout.dart';
-
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -54,10 +52,7 @@ class MainScreen extends StatelessWidget {
                 ),
                 Text(
                   "Mirkadim, Munshiganj",
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.white70,
-                  ),
+                  style: TextStyle(fontSize: 13, color: Colors.white70),
                 ),
               ],
             ),
@@ -73,38 +68,6 @@ class MainScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
-                    // Container(
-                    //   padding: EdgeInsets.all(10),
-                    //   color: AppColors.primary,
-                    //   child: Row(
-                    //     children: [
-                    //       SizedBox(
-                    //         width: 50,
-                    //         height: 50,
-                    //         child: Image.asset("assets/images/img.png"),
-                    //       ),
-                    //       const SizedBox(width: 10),
-                    //       Column(
-                    //         crossAxisAlignment: CrossAxisAlignment.start,
-                    //         children: [
-                    //           Text(
-                    //             "Munshiganj Polytechnic Institute",
-                    //             style: TextStyle(
-                    //               color: Colors.white,
-                    //               fontSize: 18,
-                    //               fontWeight: FontWeight.bold,
-                    //             ),
-                    //           ),
-                    //           Text(
-                    //             "Mirkadim, Munshiganj",
-                    //             style: TextStyle(fontSize: 16,
-                    //               color: Colors.white,),
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
                     Text(
                       "Munshiganj Polytechnic Institute is a government polytechnic institute. It was established in 2006. This institute conducts 4 years Diploma-in-Engineering course under BTEB.  Here are 7 technologies.",
                       style: TextStyle(fontSize: 16),
@@ -168,30 +131,30 @@ class MainScreen extends StatelessWidget {
                   children: [
                     DashboardCard(
                       onTap: () {
-                        Get.to(() =>  PolyMain());
+                        Get.to(() => AttendanceView());
                       },
-                      title: "Polytechnic Management",
-                      icon: Icons.school,
+                      title: "Attendance",
+                      icon: Icons.access_time,
                     ),
                     DashboardCard(
-                      title: "Library Management ",
+                      title: "Library ",
                       icon: Icons.book_outlined,
                       onTap: () {
-                        Get.to(() => LibraryManagement());
+                        Get.to(() => LibraryMainView());
                       },
                     ),
                     DashboardCard(
                       onTap: () {
-                        Get.to(() => MainView());
+                        Get.to(() => AccountsMainView());
                       },
-                      title: "Register Management",
+                      title: "Register",
                       icon: Icons.account_balance,
                     ),
                     DashboardCard(
                       onTap: () {
                         Get.to(() => ExamView());
                       },
-                      title: "Exam Management",
+                      title: "Exam ",
                       icon: Icons.calendar_today,
                     ),
                     DashboardCard(
@@ -214,6 +177,13 @@ class MainScreen extends StatelessWidget {
                       },
                       title: "Blood Donation",
                       icon: Icons.bloodtype,
+                    ),
+                    DashboardCard(
+                      onTap: () {
+                        Get.to(() => CGPACalculatorView());
+                      },
+                      title: "CGPA Calculator",
+                      icon: Icons.calculate,
                     ),
                   ],
                 ),

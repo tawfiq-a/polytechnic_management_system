@@ -1,11 +1,26 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ExamController extends GetxController {
   var selectedIndex = 0.obs;
   var selectedFileName = "".obs;
 
-  // file pick function
+  Future<void> downloadPdf(String pdfUrl) async {
+    final Uri url = Uri.parse(pdfUrl);
+    try {
+      if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+        throw Exception('Could not launch $url');
+      }
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        "Failed to open PDF. Please check your internet connection.",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
   Future<void> pickFile() async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -14,9 +29,7 @@ class ExamController extends GetxController {
       );
 
       if (result != null) {
-        //   selectedFileName.value = result.files.single.name;
         selectedFileName.value = result.files.single.name;
-
         Get.snackbar(
           "Success",
           "File Selected: ${result.files.single.name}",
@@ -47,6 +60,8 @@ class ExamController extends GetxController {
           ? "Diploma in engineering 2022"
           : "Diploma in engineering",
       "date": "25-12-12",
+      "pdfUrl":
+          "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
   ).obs;
 

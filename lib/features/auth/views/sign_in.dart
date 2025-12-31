@@ -15,7 +15,7 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          /// Background Image
+          // Background Image
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -24,17 +24,19 @@ class LoginView extends StatelessWidget {
               ),
             ),
           ),
-          ///  Shadow / Overlay
-          Container(
-            color: Colors.black.withValues(alpha: 0.6),
-          ),
+          // Dark Overlay
+          Container(color: Colors.black.withOpacity(0.6)),
 
-          /// Main Content
           Center(
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Image.asset(
+                    "assets/images/img.png",
+                    height: 100,
+                  ),
+                  const SizedBox(height: 10),
                   const Text(
                     "Sign In",
                     style: TextStyle(
@@ -45,7 +47,7 @@ class LoginView extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
 
-                  /// Login Card
+                  // Login Card
                   Container(
                     width: 400,
                     margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -75,7 +77,6 @@ class LoginView extends StatelessWidget {
                         ),
                         const SizedBox(height: 30),
 
-                        /// Email
                         const Text(
                           "Email",
                           style: TextStyle(
@@ -88,7 +89,6 @@ class LoginView extends StatelessWidget {
 
                         const SizedBox(height: 20),
 
-                        /// Password
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -100,9 +100,8 @@ class LoginView extends StatelessWidget {
                               ),
                             ),
                             GestureDetector(
-                              onTap: () {
-                                Get.to(() => ForgotPasswordView());
-                              },
+                              onTap: () =>
+                                  Get.to(() => const ForgotPasswordView()),
                               child: const Text(
                                 "Forgot your password?",
                                 style: TextStyle(
@@ -116,10 +115,9 @@ class LoginView extends StatelessWidget {
                         const SizedBox(height: 8),
 
                         Obx(
-                              () => _buildTextField(
+                          () => _buildTextField(
                             hint: "••••••••••••",
-                            obscureText:
-                            !controller.isPasswordVisible.value,
+                            obscureText: !controller.isPasswordVisible.value,
                             suffixIcon: IconButton(
                               icon: Icon(
                                 controller.isPasswordVisible.value
@@ -128,24 +126,20 @@ class LoginView extends StatelessWidget {
                                 size: 18,
                                 color: Colors.grey,
                               ),
-                              onPressed:
-                              controller.togglePasswordVisibility,
+                              onPressed: controller.togglePasswordVisibility,
                             ),
                           ),
                         ),
 
                         const SizedBox(height: 20),
 
-                        /// Remember Me
                         Row(
                           children: [
                             Obx(
-                                  () => Checkbox(
+                              () => Checkbox(
                                 value: controller.isRememberMe.value,
-                                onChanged:
-                                controller.toggleRememberMe,
-                                activeColor:
-                                const Color(0xFF003D4D),
+                                onChanged: controller.toggleRememberMe,
+                                activeColor: const Color(0xFF003D4D),
                               ),
                             ),
                             const Text(
@@ -157,20 +151,17 @@ class LoginView extends StatelessWidget {
 
                         const SizedBox(height: 25),
 
-                        /// Continue Button
                         SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: ElevatedButton(
-                            onPressed: () {
-                              Get.to(() => BottomNavBar());
-                            },
+                            onPressed: () => Get.offAll(
+                              () => BottomNavBar(),
+                            ),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                              const Color(0xFF003D4D),
+                              backgroundColor: const Color(0xFF003D4D),
                               shape: RoundedRectangleBorder(
-                                borderRadius:
-                                BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8),
                               ),
                             ),
                             child: const Text(
@@ -188,20 +179,18 @@ class LoginView extends StatelessWidget {
 
                   const SizedBox(height: 30),
 
-                  /// Footer
+                  // Footer: Register Link
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
                         "Don’t have an account? ",
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Colors.white,
-                        ),
+                        style: TextStyle(fontSize: 13, color: Colors.white),
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.toNamed(AppRoutes.registerSelect);
+
+                          Get.toNamed(AppRoutes.studentRegister);
                         },
                         child: const Text(
                           "Register",
@@ -224,7 +213,6 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  /// Reusable TextField
   Widget _buildTextField({
     required String hint,
     bool obscureText = false,
@@ -250,8 +238,7 @@ class LoginView extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide:
-          const BorderSide(color: Color(0xFF003D4D)),
+          borderSide: const BorderSide(color: Color(0xFF003D4D)),
         ),
       ),
     );

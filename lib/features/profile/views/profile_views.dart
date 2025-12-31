@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:poly_manage_systm/core/constants/colors.dart';
+
+import '../../auth/views/sign_in.dart';
 import '../controllers/profile_controllers.dart';
 import 'about_campus.dart';
 import 'departments.dart';
@@ -8,7 +10,9 @@ import 'edit_profile.dart';
 import 'instructor list.dart';
 
 class ProfileView extends StatelessWidget {
-  final controller = Get.put(ProfileController());
+  ProfileView({super.key});
+
+  final ProfileController controller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +58,6 @@ class ProfileView extends StatelessWidget {
             ),
             const SizedBox(height: 15),
             _buildStatGrid(),
-
             const SizedBox(height: 30),
           ],
         ),
@@ -62,8 +65,10 @@ class ProfileView extends StatelessWidget {
     );
   }
 
+  // ================= PROFILE HEADER =================
   Widget _buildProfileHeader(BuildContext context) {
     var user = controller.userData;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
@@ -83,25 +88,22 @@ class ProfileView extends StatelessWidget {
                 backgroundColor: Colors.white,
                 child: CircleAvatar(
                   radius: 52,
-                  backgroundImage: NetworkImage(user['image']!),
+                  backgroundImage: AssetImage(user['image']!),
                 ),
               ),
               Positioned(
                 bottom: 0,
                 right: 0,
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    padding: const EdgeInsets.all(6),
-                    decoration: const BoxDecoration(
-                      color: Colors.blue,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.camera_alt,
-                      color: Colors.white,
-                      size: 18,
-                    ),
+                child: Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.camera_alt,
+                    color: Colors.white,
+                    size: 18,
                   ),
                 ),
               ),
@@ -121,7 +123,6 @@ class ProfileView extends StatelessWidget {
             style: const TextStyle(fontSize: 14, color: Colors.white70),
           ),
           const SizedBox(height: 20),
-
           Container(
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
@@ -138,9 +139,7 @@ class ProfileView extends StatelessWidget {
               ],
             ),
           ),
-
           const SizedBox(height: 20),
-
           SizedBox(
             width: 180,
             child: OutlinedButton.icon(
@@ -178,6 +177,7 @@ class ProfileView extends StatelessWidget {
     );
   }
 
+  // ================= INFO LIST =================
   Widget _buildInfoList() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -185,27 +185,38 @@ class ProfileView extends StatelessWidget {
         children: [
           _infoTile(Icons.info_outline, "About Campus", () {
             Get.to(() => AboutCampusView());
-          }),
+          }, AppColors.white),
           _infoTile(Icons.grid_view_outlined, "Our Departments", () {
             Get.to(() => DepartmentListView());
-          }),
+          },AppColors.white),
           _infoTile(Icons.person_search_outlined, "Instructor List", () {
             Get.to(() => InstructorListView());
-          }),
+          },AppColors.white),
+
+          // 🔴 LOGOUT
+          _infoTile(Icons.logout, "Logout",
+                  () {
+            _showLogoutDialog();
+          },Colors.red),
         ],
       ),
     );
   }
 
-  Widget _infoTile(IconData icon, String title, VoidCallback onPress) {
+  Widget _infoTile(
+    IconData icon,
+    String title,
+    VoidCallback onPress,
+    Color? lColor,
+  ) {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.primary, width: 2),
-        color: Colors.white,
+        color: lColor,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
-          BoxShadow(color: Colors.black.withValues(alpha: 0.02), blurRadius: 5),
+          BoxShadow(color: Colors.black.withOpacity(0.03), blurRadius: 5),
         ],
       ),
       child: ListTile(
@@ -217,6 +228,26 @@ class ProfileView extends StatelessWidget {
     );
   }
 
+  // ================= LOGOUT DIALOG =================
+  void _showLogoutDialog() {
+    Get.defaultDialog(
+      title: "Logout",
+      middleText: "Are you sure you want to logout?",
+      textCancel: "Cancel",
+      textConfirm: "Logout",
+      confirmTextColor: Colors.white,
+      buttonColor: Colors.red,
+      onConfirm: () {
+        Get.offAll(() => LoginView());
+
+        // 🔴 Logout logic here
+        // controller.logout();
+        // Get.offAll(() => LoginView());
+      },
+    );
+  }
+
+  // ================= STATS =================
   Widget _buildStatGrid() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -264,14 +295,14 @@ class ProfileView extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.white,
+                  color: Colors.white,
                 ),
               ),
               Text(
                 label,
                 style: const TextStyle(
                   fontSize: 10,
-                  color: AppColors.white,
+                  color: Colors.white,
                   fontWeight: FontWeight.w500,
                 ),
               ),
