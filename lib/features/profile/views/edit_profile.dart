@@ -32,9 +32,6 @@ class EditProfileView extends StatelessWidget {
             _buildUploadZone(),
             const SizedBox(height: 20),
 
-            _buildImagePreview(),
-            const SizedBox(height: 30),
-
             _buildInputLabel("Full Name"),
             _buildTextField("Enter your name"),
             const SizedBox(height: 20),
@@ -318,33 +315,6 @@ class EditProfileView extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildImagePreview() {
-    return Container(
-      height: 100,
-      width: 150,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        image: const DecorationImage(
-          image: NetworkImage('https://i.pravatar.cc/150?u=9'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Align(
-        alignment: Alignment.topRight,
-        child: Padding(
-          padding: const EdgeInsets.all(5),
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.red,
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(Icons.close, color: Colors.white, size: 14),
-          ),
-        ),
       ),
     );
   }

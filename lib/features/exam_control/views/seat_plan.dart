@@ -9,72 +9,30 @@ class SeatPlan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Manage Seat Plan", style: TextStyle(color: Colors.grey)),
-          const SizedBox(height: 20),
-
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(40),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.shade300),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              children: [
-                const Icon(
-                  Icons.cloud_upload_outlined,
-                  size: 50,
-                  color: Colors.grey,
-                ),
-                const Text(
-                  "Drop file or browse",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 5),
-
-                Obx(
-                  () => Text(
-                    controller.selectedFileName.value.isEmpty
-                        ? "Format: .jpeg, .png, PDF & Max file size: 25 MB"
-                        : "Selected: ${controller.selectedFileName.value}",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: controller.selectedFileName.value.isEmpty
-                          ? Colors.grey
-                          : Colors.green,
-                      fontWeight: controller.selectedFileName.value.isEmpty
-                          ? FontWeight.normal
-                          : FontWeight.bold,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    controller.pickFile();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                  ),
-                  child: const Text(
-                    "Browse Files",
-                    style: TextStyle(color: AppColors.white),
-                  ),
-                ),
-              ],
+          const Text(
+            "Seat Plan",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 30),
-
+          const SizedBox(height: 25),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.grey.shade200),
+              border: Border.all(color: AppColors.primary, width: 1.5),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.02),
+                  blurRadius: 10,
+                ),
+              ],
             ),
             child: Obx(
               () => Column(
@@ -85,55 +43,64 @@ class SeatPlan extends StatelessWidget {
                       headingRowColor: MaterialStateProperty.all(
                         const Color(0xFFF1F4F6),
                       ),
+                      columnSpacing: 40,
+                      headingTextStyle: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                       columns: const [
                         DataColumn(label: Text('No')),
                         DataColumn(label: Text('Title')),
                         DataColumn(label: Text('Publish date')),
                         DataColumn(label: Text('Action')),
                       ],
-                      rows: controller.routineList
-                          .asMap()
-                          .entries
-                          .map(
-                            (e) => DataRow(
-                              cells: [
-                                DataCell(Text(e.value['no']!)),
-                                DataCell(Text(e.value['title']!)),
-                                DataCell(Text(e.value['date']!)),
-                                DataCell(
-                                  Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.edit_note,
-                                        color: Colors.grey,
-                                      ),
-                                      const SizedBox(width: 10),
-                                      GestureDetector(
-                                        onTap: () =>
-                                            controller.deleteRoutineItem(e.key),
-                                        child: const Icon(
-                                          Icons.delete_outline,
-                                          color: Colors.redAccent,
-                                        ),
-                                      ),
-                                    ],
+                      rows: controller.routineList.asMap().entries.map((e) {
+                        var data = e.value;
+                        return DataRow(
+                          cells: [
+                            DataCell(Text(data['no']!)),
+                            DataCell(Text(data['title']!)),
+                            DataCell(Text(data['date']!)),
+                            DataCell(
+                              ElevatedButton.icon(
+                                onPressed: () {
+                                  if (data.containsKey('pdfUrl')) {
+                                    controller.downloadPdf(data['pdfUrl']!);
+                                  } else {
+                                    Get.snackbar(
+                                      "Sorry",
+                                      "PDF not available for this item",
+                                    );
+                                  }
+                                },
+                                icon: const Icon(
+                                  Icons.picture_as_pdf,
+                                  size: 14,
+                                  color: Colors.white,
+                                ),
+                                label: const Text(
+                                  "PDF",
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
                                   ),
                                 ),
-                              ],
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.primary,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                  ),
+                                  minimumSize: const Size(60, 28),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  elevation: 0,
+                                ),
+                              ),
                             ),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(Icons.chevron_left),
-                        Text(" 1  2  3 "),
-                        Icon(Icons.chevron_right),
-                      ],
+                          ],
+                        );
+                      }).toList(),
                     ),
                   ),
                 ],

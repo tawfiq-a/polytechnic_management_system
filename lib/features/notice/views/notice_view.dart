@@ -48,8 +48,6 @@ class AllNoticesView extends StatelessWidget {
               ),
             ),
           ),
-
-          _buildPagination(),
         ],
       ),
     );
@@ -138,27 +136,6 @@ class AllNoticesView extends StatelessWidget {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPagination() {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 15),
-      color: Colors.white,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(Icons.chevron_left, color: Colors.grey, size: 18),
-          const SizedBox(width: 10),
-          _pageItem("1", isSelected: true),
-          _pageItem("2"),
-          _pageItem("3"),
-          _pageItem("4"),
-          _pageItem("5"),
-          const SizedBox(width: 10),
-          const Icon(Icons.chevron_right, color: Colors.grey, size: 18),
         ],
       ),
     );

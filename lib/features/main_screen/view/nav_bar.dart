@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:poly_manage_systm/features/main_screen/view/main_screen.dart';
 import 'package:poly_manage_systm/features/profile/views/profile_views.dart';
-
 import '../../../core/constants/colors.dart';
-import '../../chat/views/chat_screen.dart';
-import '../../chat/views/user_list.dart';
+import '../../chat/views/chat_main_screen.dart';
 import '../controllers/nav_controller.dart';
 
 class BottomNavBar extends StatelessWidget {

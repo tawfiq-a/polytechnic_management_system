@@ -16,7 +16,6 @@ void showPaymentDetailsBottomSheet() {
       ),
       child: Column(
         children: [
-
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Row(
@@ -39,7 +38,6 @@ void showPaymentDetailsBottomSheet() {
           ),
           const Divider(),
 
-
           Expanded(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -47,7 +45,6 @@ void showPaymentDetailsBottomSheet() {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 15),
-
 
                   _sectionHeader("Payment Info"),
                   _buildTwoColumnRow(
@@ -61,7 +58,6 @@ void showPaymentDetailsBottomSheet() {
 
                   const SizedBox(height: 20),
 
-
                   _sectionHeader("Payment Details"),
                   _buildTwoColumnRow(
                     _infoField("Amount", "2500"),
@@ -69,7 +65,6 @@ void showPaymentDetailsBottomSheet() {
                   ),
 
                   const SizedBox(height: 20),
-
 
                   _sectionHeader("Transaction Proof"),
                   _buildTwoColumnRow(
@@ -83,14 +78,11 @@ void showPaymentDetailsBottomSheet() {
 
                   const SizedBox(height: 30),
 
-
                   SizedBox(
                     width: 200,
                     height: 45,
                     child: ElevatedButton(
-                      onPressed: () {
-
-                      },
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF003D4D),
                         shape: RoundedRectangleBorder(
@@ -99,7 +91,10 @@ void showPaymentDetailsBottomSheet() {
                       ),
                       child: const Text(
                         "Download Info",
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -114,7 +109,6 @@ void showPaymentDetailsBottomSheet() {
   );
 }
 
-
 Widget _sectionHeader(String title) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 12),
@@ -128,7 +122,6 @@ Widget _sectionHeader(String title) {
     ),
   );
 }
-
 
 Widget _infoField(String label, String value) {
   return Column(
@@ -158,7 +151,6 @@ Widget _infoField(String label, String value) {
     ],
   );
 }
-
 
 Widget _buildTwoColumnRow(Widget left, Widget right) {
   return Padding(
