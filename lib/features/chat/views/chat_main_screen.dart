@@ -47,54 +47,59 @@ class ChatInboxView extends GetView<ChatController> {
 
   Widget _buildCustomTabSwitcher() {
     return Container(
-      margin: const EdgeInsets.all(15),
-      height: 30,
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      height: 55,
       decoration: BoxDecoration(
         color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(30),
       ),
-      child: Obx(
-        () => Row(
-          children: [
-            _tabItem(0, "Messages", Icons.chat_bubble_outline),
-            _tabItem(1, "Dept Groups", Icons.groups_outlined),
-          ],
-        ),
+      child: Row(
+
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          _tabItem(0, "Messages", Icons.chat_bubble_outline),
+          _tabItem(1, "Dept Groups", Icons.groups_outlined),
+        ],
       ),
     );
   }
 
   Widget _tabItem(int index, String title, IconData icon) {
-    bool isSelected = controller.selectedTab.value == index;
     return Expanded(
-      child: GestureDetector(
-        onTap: () => controller.selectedTab.value = index,
-        child: Container(
-          decoration: BoxDecoration(
-            color: isSelected ? const Color(0xFF003D4D) : Colors.transparent,
-            borderRadius: BorderRadius.circular(25),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                color: isSelected ? Colors.white : Colors.black,
-                size: 20,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                title,
-                style: TextStyle(
+      child: Obx(() {
+        // Obx অবশ্যই এখানে থাকতে হবে যাতে ভ্যালু চেঞ্জ হলে সাথে সাথে UI আপডেট হয়
+        bool isSelected = controller.selectedTab.value == index;
+
+        return GestureDetector(
+          onTap: () => controller.selectedTab.value = index,
+          child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: isSelected ? const Color(0xFF003D4D) : Colors.transparent,
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  icon,
                   color: isSelected ? Colors.white : Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize:16,
+                  size: 22,
                 ),
-              ),
-            ],
+                const SizedBox(width: 8),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: isSelected ? Colors.white : Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 
